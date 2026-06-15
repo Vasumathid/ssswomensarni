@@ -1,0 +1,90 @@
+==============================================
+SSS COLLEGE FOR WOMEN — WEBSITE SETUP GUIDE
+==============================================
+
+FILES IN THIS PACKAGE:
+-----------------------
+index.html       → Home page
+about.html       → About Us, Chairman, Principal, Vision
+academics.html   → Courses, Fee Structure, Admissions, FAQ
+campus.html      → Facilities, Lab, Library, Hostel, Transport
+contact.html     → Contact form, Map, WhatsApp, 3 phone numbers
+style.css        → All styling (DO NOT EDIT unless you know CSS)
+main.js          → All interactivity (DO NOT EDIT)
+images/          → Folder to put all your college photos
+SETUP_GUIDE.txt  → This file
+images/IMAGES_README.txt → Image instructions
+
+ADMIN LOGIN (SECRET):
+---------------------
+- Click the tiny ⚙ symbol in the bottom-right of the footer
+- Username: sssadmin
+- Password:  sss@2025
+- CHANGE THIS PASSWORD after first use (tell your developer)
+
+DASHBOARD SHOWS:
+- Total visitors to the website
+- Number of enquiries received
+- Phone calls clicked from the site
+- WhatsApp clicks from the site
+- Visitors per day (last 7 days bar chart)
+- Visitors by location (Arni, Chennai, Vellore etc.)
+- All enquiry form submissions with name, phone, course
+- Update content panel (notice, announcement)
+
+HOW TO GO LIVE — STEP BY STEP:
+--------------------------------
+OPTION A: Using Hostinger / GoDaddy / any hosting
+  1. Buy a domain: ssscollegeforwomenarni.ac.in (or .com)
+  2. Buy hosting (Hostinger Basic = ₹99/month)
+  3. Open cPanel → File Manager → public_html folder
+  4. Upload ALL files from this folder
+  5. Your website is live!
+
+OPTION B: Using Google Sites (FREE, no coding)
+  - Not recommended — better to use proper hosting for SEO
+
+OPTION C: Share with Budget Website Developers, Vellore
+  - WhatsApp all files to your web developer
+  - They will upload and configure on your domain
+
+GOOGLE ANALYTICS (to track visitors properly):
+------------------------------------------------
+1. Go to analytics.google.com
+2. Create account → Add property → Website
+3. You get a code like: G-XXXXXXXXXX
+4. Open index.html, about.html, academics.html, campus.html, contact.html
+5. Find: GA_MEASUREMENT_ID
+6. Replace with your actual code (e.g. G-ABC123XYZ)
+7. Now Google tracks all visitors in real detail
+
+SEO — WHY THIS SITE WILL RANK ON GOOGLE:
+------------------------------------------
+✓ Title tags with "best women's college Arni" keywords
+✓ Meta descriptions for every page
+✓ Schema.org CollegeOrUniversity markup (Google reads this)
+✓ Canonical URL set
+✓ All text is crawlable (no images hiding content)
+✓ Fast loading (no heavy external libraries)
+✓ Mobile responsive
+✓ Internal linking across all pages
+
+TO APPEAR IN GOOGLE SEARCH:
+-----------------------------
+1. Go to search.google.com/search-console
+2. Add your website URL
+3. Verify ownership
+4. Submit sitemap (ask developer to create one)
+5. Google will index in 1–4 weeks
+
+WHAT TO UPDATE REGULARLY (keeps site ranking high):
+-----------------------------------------------------
+- Add new achievement / rank holder photos each year
+- Post events, competitions, college day updates
+- Add new student testimonials
+- Update admission dates every June
+
+CONTACT FOR HELP:
+-----------------
+Budget Website Developers, Vellore
+https://budgetwebsitedevelopersvellore.org
