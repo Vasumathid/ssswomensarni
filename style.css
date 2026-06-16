@@ -23,7 +23,7 @@ nav{background:var(--green);position:sticky;top:0;z-index:500;box-shadow:0 2px 1
 .nav-links li a{color:#fff;font-size:13px;padding:14px 12px;display:block;opacity:.9;transition:background .2s;}
 .nav-links li a:hover,.nav-links li a.active{background:rgba(255,255,255,.15);opacity:1;}
 .nav-links .apply-btn{background:var(--gold);color:#1a1a1a !important;border-radius:6px;font-weight:700 !important;opacity:1 !important;margin-left:6px;padding:8px 14px !important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:2px;background:#fff;display:block;}
 
 /* ── NOTICE MARQUEE ── */
@@ -31,7 +31,7 @@ nav{background:var(--green);position:sticky;top:0;z-index:500;box-shadow:0 2px 1
 .notice-bar .nb-label{background:var(--gold);color:#1a1a1a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
 .notice-bar marquee{color:var(--green4);font-size:13px;}
 
-/* ── PAGE HERO (inner pages) ── */
+/* ── PAGE HERO ── */
 .page-hero{background:linear-gradient(135deg,var(--green) 0%,#1a4006 100%);padding:36px 5%;color:#fff;}
 .breadcrumb{font-size:12px;opacity:.7;margin-bottom:8px;}
 .breadcrumb a{color:var(--green4);}
@@ -145,6 +145,9 @@ nav{background:var(--green);position:sticky;top:0;z-index:500;box-shadow:0 2px 1
 .trustee-table td{padding:11px 16px;border-bottom:1px solid var(--border);}
 .trustee-table tr:nth-child(even){background:var(--bg);}
 .trustee-table tr:hover{background:var(--green3);}
+
+/* ── TABLE SCROLL WRAPPER ── */
+.table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 
 /* ── FEE TABLE ── */
 .fee-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:16px;}
@@ -303,7 +306,12 @@ footer h4{color:#fff;font-size:12px;font-weight:700;margin-bottom:12px;text-tran
 .btn-save:hover{background:var(--green2);}
 .save-msg{font-size:13px;color:var(--green);margin-left:12px;display:none;font-weight:600;}
 
-/* ── RESP ── */
+/* ═══════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   960px → tablet, 600px → large mobile, 480px → iPhone
+═══════════════════════════════════════════════ */
+
+/* ── TABLET (≤960px) ── */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;}
   .hero-img-grid{display:none;}
@@ -311,16 +319,159 @@ footer h4{color:#fff;font-size:12px;font-weight:700;margin-bottom:12px;text-tran
   .vm-grid{grid-template-columns:1fr;}
   .chairman-wrap{grid-template-columns:1fr;}
   .f-grid{grid-template-columns:1fr 1fr;}
-  .nav-links{display:none;flex-direction:column;background:var(--green);position:absolute;top:68px;left:0;right:0;padding:6px 0;}
+  .nav-links{display:none;flex-direction:column;background:var(--green);position:absolute;top:68px;left:0;right:0;padding:6px 0;z-index:400;}
   .nav-links.open{display:flex;}
   .nav-links li a{padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.1);}
   .hamburger{display:flex;}
   .two-dash,.update-grid{grid-template-columns:1fr;}
   .gallery-strip{grid-template-columns:1fr 1fr;}
 }
+
+/* ── LARGE MOBILE (≤600px) ── */
 @media(max-width:600px){
   .f-grid{grid-template-columns:1fr;}
   .gallery-strip{grid-template-columns:1fr 1fr;}
   .metrics{grid-template-columns:1fr 1fr;}
   .rank-grid{grid-template-columns:1fr 1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .section{padding:40px 4%;}
+  .page-hero{padding:26px 4%;}
+  .hero{padding:40px 4% 36px;}
+  .apply-cta{padding:24px 20px;flex-direction:column;align-items:flex-start;}
+  .apply-cta h3{font-size:17px;}
+  .d-nav{height:auto;flex-direction:column;align-items:flex-start;padding:12px 16px;gap:10px;}
+  .d-nav-left{flex-wrap:wrap;gap:8px;}
+  .d-nav span{font-size:13px;}
+  .d-tab{padding:6px 12px;font-size:12px;}
+  .d-logout{align-self:flex-end;}
+  .d-body{padding:16px;}
+  .enquiry-box{padding:20px 16px;}
+  .about-green{padding:22px 18px;}
+}
+
+/* ── IPHONE / SMALL MOBILE (≤480px) ── */
+@media(max-width:480px){
+  /* Topbar: stack contact info and nav links */
+  .topbar{flex-direction:column;align-items:flex-start;gap:3px;padding:6px 4%;}
+  .topbar span:last-child{display:flex;gap:0;flex-wrap:wrap;}
+  .topbar a{margin-left:0;margin-right:10px;}
+
+  /* Nav */
+  .nav-inner{padding:0 4%;}
+  .nav-title strong{font-size:12px;}
+  .nav-title span{font-size:10px;}
+  .nav-links{top:60px;}
+
+  /* Notice bar */
+  .notice-bar{padding:6px 4%;}
+  .notice-bar marquee{font-size:12px;}
+
+  /* Hero */
+  .hero{padding:32px 4% 28px;}
+  .hero .tagline{font-size:14px;}
+  .btn-gold,.btn-outline{padding:11px 18px;font-size:13px;}
+
+  /* Sections */
+  .section{padding:32px 4%;}
+  .section.alt{padding:32px 4%;}
+  .page-hero{padding:22px 4%;}
+  .s-sub{font-size:14px;margin-bottom:24px;}
+  .s-title{margin-bottom:8px;}
+
+  /* Steps: 1 column on tiny screens */
+  .steps{grid-template-columns:1fr;}
+
+  /* Rank grid: 1 column */
+  .rank-grid{grid-template-columns:1fr;}
+
+  /* Tables: horizontal scroll */
+  .fee-table,.trustee-table,.eq-table{min-width:520px;}
+  .table-scroll,.fee-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px;}
+
+  /* Wrap fee tables that aren't already in a scroll wrapper */
+  /* (JS independent: the browser will scroll the section) */
+  section .fee-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+
+  /* Apply CTA */
+  .apply-cta{padding:20px 16px;border-radius:10px;}
+  .apply-cta h3{font-size:16px;}
+  .btn-white{padding:11px 18px;font-size:13px;}
+
+  /* Card grid force 1 col */
+  .card-grid{grid-template-columns:1fr;}
+
+  /* Metrics 2 col tighter */
+  .metrics{grid-template-columns:1fr 1fr;gap:10px;}
+  .metric{padding:14px 12px;}
+  .metric .m-val{font-size:24px;}
+
+  /* Footer */
+  .f-grid{grid-template-columns:1fr;}
+  .f-bottom{flex-direction:column;align-items:flex-start;gap:6px;}
+
+  /* FAQ */
+  .faq-q{font-size:14px;}
+  .faq-list{max-width:100%;}
+
+  /* Fee note */
+  .fee-note{padding:16px 14px;}
+  .fee-note ul li{font-size:13px;}
+
+  /* Admin box */
+  .admin-box{padding:24px 18px;border-radius:12px;}
+  .admin-box h2{font-size:18px;}
+
+  /* Dashboard nav */
+  .d-nav{height:auto;flex-direction:column;align-items:flex-start;padding:10px 14px;gap:8px;}
+  .d-nav-left{flex-direction:column;align-items:flex-start;gap:6px;width:100%;}
+  .d-nav span{font-size:13px;}
+  .d-tab{padding:6px 10px;font-size:12px;}
+  .d-logout{width:100%;text-align:center;}
+  .d-body{padding:12px;}
+  .d-section{padding:16px 14px;}
+  .bar-lbl{width:70px;font-size:11px;}
+
+  /* Enquiry table scroll */
+  .d-section .eq-table{min-width:480px;}
+
+  /* Update grid 1 col */
+  .update-grid{grid-template-columns:1fr;}
+
+  /* Chairman */
+  .chairman-wrap{grid-template-columns:1fr;}
+
+  /* Person grid 2 col */
+  .person-grid{grid-template-columns:1fr 1fr;}
+
+  /* Route tags */
+  .route-grid{grid-template-columns:1fr 1fr;}
+
+  /* Gallery */
+  .gallery-strip{grid-template-columns:1fr 1fr;}
+
+  /* Achievement strip */
+  .ach-strip{gap:10px;padding:18px 4%;}
+  .ach-item .a-num{font-size:24px;}
+
+  /* VM boxes */
+  .vm-grid{grid-template-columns:1fr;}
+  .vm-box{padding:18px;}
+
+  /* contact buttons full width */
+  .contact-btns{flex-direction:column;}
+  .btn-green,.btn-wa{width:100%;justify-content:center;}
+}
+
+/* ── ULTRA SMALL (≤360px) — iPhone SE ── */
+@media(max-width:360px){
+  .nav-title span{display:none;}
+  .topbar{font-size:11px;}
+  .steps{grid-template-columns:1fr;}
+  .metrics{grid-template-columns:1fr;}
+  .rank-grid{grid-template-columns:1fr;}
+  .person-grid{grid-template-columns:1fr;}
+  .route-grid{grid-template-columns:1fr 1fr;}
+  .card-grid{grid-template-columns:1fr;}
+  .hero-btns{flex-direction:column;gap:8px;}
+  .hero-btns .btn-gold,.hero-btns .btn-outline{width:100%;justify-content:center;}
 }
