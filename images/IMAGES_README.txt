@@ -23,7 +23,7 @@ sports-day.jpg           → Sports day / events
 cultural-1.jpg           → Cultural programme
 cultural-2.jpg           → Dance / skit performance
 convocation.jpg          → Graduation ceremony (already on prospectus)
-rank-puvana.jpg          → A. Puvana (University V Rank)
+rank-puvana.jpg          → A. Bhuvana (University V Rank)
 rank-lavanya.jpg         → R. Lavanya (University IX Rank)
 rank-vimala.jpg          → A. Vimala (University IV Rank)
 gallery-1.jpg            → Any college event
