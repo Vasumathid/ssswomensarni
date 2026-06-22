@@ -1,0 +1,235 @@
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <button class="a-close" onclick="closeAdmin()">&#10005;</button>
+    <h2>&#128274; Admin Login</h2>
+    <p class="admin-sub">SSS College for Women &mdash; Management Portal</p>
+    <div class="a-err" id="adminErr">
+      Incorrect credentials. Please try again.
+    </div>
+    <input
+      type="text"
+      id="adminUser"
+      placeholder="Username"
+      autocomplete="off"
+    />
+    <input type="password" id="adminPass" placeholder="Password" />
+    <button class="admin-login-btn" onclick="doLogin()">
+      Login to Dashboard
+    </button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="d-nav">
+    <div class="d-nav-left">
+      <span>&#128200; SSS College &mdash; Admin Dashboard</span>
+      <button
+        class="d-tab active"
+        data-tab="analytics"
+        onclick="showTab('analytics')"
+      >
+        Analytics
+      </button>
+      <button class="d-tab" data-tab="enquiries" onclick="showTab('enquiries')">
+        Enquiries
+      </button>
+      <button class="d-tab" data-tab="update" onclick="showTab('update')">
+        Update Content
+      </button>
+    </div>
+    <button class="d-logout" onclick="closeDashboard()">&#10005; Close</button>
+  </div>
+  <div class="d-body">
+    <div class="d-title">Welcome, Admin</div>
+    <div class="d-sub" id="d-date"></div>
+    <div class="d-panel active" id="panel-analytics">
+      <div class="metrics">
+        <div class="metric">
+          <div class="m-icon">&#128065;</div>
+          <span class="m-val" id="d-visitors">0</span>
+          <div class="m-lbl">Total Visitors</div>
+        </div>
+        <div class="metric">
+          <div class="m-icon">&#128231;</div>
+          <span class="m-val" id="d-enquiries">0</span>
+          <div class="m-lbl">Enquiries Received</div>
+        </div>
+        <div class="metric">
+          <div class="m-icon">&#128222;</div>
+          <span class="m-val" id="d-calls">0</span>
+          <div class="m-lbl">Calls from Website</div>
+        </div>
+        <div class="metric">
+          <div class="m-icon">&#128172;</div>
+          <span class="m-val" id="d-wa">0</span>
+          <div class="m-lbl">WhatsApp Clicks</div>
+        </div>
+      </div>
+      <div class="two-dash">
+        <div class="d-section">
+          <h3>&#128200; Daily Visitors — Last 7 Days</h3>
+          <div id="visitorChart"></div>
+        </div>
+        <div class="d-section">
+          <h3>&#127758; Visitors by Location</h3>
+          <ul class="loc-list" id="locationList"></ul>
+        </div>
+      </div>
+      <div class="d-section">
+        <h3>&#128196; Most Visited Pages</h3>
+        <div id="pagesChart"></div>
+      </div>
+    </div>
+    <div class="d-panel" id="panel-enquiries">
+      <div class="d-section">
+        <h3>&#128231; All Enquiries</h3>
+        <table class="eq-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Course</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="enquiryTable"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="d-panel" id="panel-update">
+      <div class="d-section">
+        <h3>&#9999; Update Website Content</h3>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 18px">
+          Edit key information. Contact your web developer to publish changes
+          permanently.
+        </p>
+        <div class="update-grid">
+          <div class="u-field">
+            <label>Principal Name</label
+            ><input
+              type="text"
+              placeholder="Dr. S. Lakshmi, M.Com., M.Phil., Ph.D."
+            />
+          </div>
+          <div class="u-field">
+            <label>Admission Notice</label
+            ><input type="text" placeholder="Admissions open for 2025-26" />
+          </div>
+          <div class="u-field">
+            <label>Phone Number</label
+            ><input type="text" placeholder="98942 18555 / 84380 01755" />
+          </div>
+          <div class="u-field">
+            <label>Latest Achievement</label
+            ><input
+              type="text"
+              placeholder="e.g. 49 students First Class with Distinction"
+            />
+          </div>
+          <div class="u-field">
+            <label>Notice Board Message</label
+            ><textarea
+              placeholder="Add a new notice for students..."
+            ></textarea>
+          </div>
+          <div class="u-field">
+            <label>Upcoming Event</label
+            ><textarea
+              placeholder="e.g. Annual Day on 15 Aug 2025..."
+            ></textarea>
+          </div>
+        </div>
+        <button class="btn-save" onclick="saveContent()">
+          &#10003; Save Changes
+        </button>
+        <span class="save-msg" id="saveMsg"
+          >&#10003; Saved! Contact developer to publish.</span
+        >
+        <p style="font-size: 12px; color: var(--muted); margin-top: 14px">
+          &#128274; Admin Credentials &mdash; Username:
+          <strong>sssadmin</strong> &nbsp;|&nbsp; Default Password:
+          <strong>sss@2025</strong> &mdash; Change this after first login.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-grid">
+    <div class="f-brand">
+      <strong>SSS College for Women, Arni</strong>
+      <p>
+        Part of SSS Group of Institutions, founded by Thiru A.K. Natarajan.
+        Empowering women through quality education at Aagaram Village, Arni,
+        Thiruvannamalai District.
+      </p>
+      <div class="f-contact">
+        <span
+          >&#128222; <a href="tel:+919894218555">98942 18555</a> &nbsp;|&nbsp;
+          <a href="tel:+918438001755">84380 01755</a> &nbsp;|&nbsp;
+          <a href="tel:+918667726979">86677 26979</a></span
+        >
+        <span
+          >&#9993;
+          <a href="mailto:arnissscollege@gmail.com"
+            >arnissscollege@gmail.com</a
+          ></span
+        >
+        <span
+          >&#128205; Aagaram Village &amp; Post, Arni Taluk, T.V.Malai District
+          &ndash; 632 316</span
+        >
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="campus.html">Campus Life</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="academics.html#admissions">Apply Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Courses</h4>
+      <ul class="f-links">
+        <li><a href="academics.html">B.Sc. Computer Science</a></li>
+        <li><a href="academics.html">B.Sc. Artificial Intelligence</a></li>
+        <li><a href="academics.html">B.C.A.</a></li>
+        <li><a href="academics.html">B.Com &amp; B.Com (CA)</a></li>
+        <li><a href="academics.html">B.B.A.</a></li>
+        <li><a href="academics.html">M.Sc. Computer Science</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>SSS Group</h4>
+      <ul class="f-links">
+        <li><a href="#">SSS College for Women, Arni</a></li>
+        <li><a href="#">SSS College of Arts &amp; Science, Arcot</a></li>
+        <li><a href="#">SSS Matriculation School, Arcot</a></li>
+        <li><a href="about.html#chairman">About the Chairman</a></li>
+        <li><a href="about.html#vision">Vision &amp; Mission</a></li>
+        <li><a href="contact.html">Find Us on Map</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>&#169; 2025 SSS College for Women, Arni. All rights reserved.</span>
+    <span
+      >Designed by
+      <a href="https://budgetwebsitedevelopersvellore.org" target="_blank"
+        >Budget Website Developers, Vellore</a
+      ></span
+    >
+    <span class="f-admin-trigger" onclick="openAdmin()" title="Admin"
+      >&#9881;</span
+    >
+  </div>
+</footer>

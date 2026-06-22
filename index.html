@@ -39,7 +39,7 @@
         "@context": "https://schema.org",
         "@type": "CollegeOrUniversity",
         "name": "SSS College for Women, Arni",
-        "description": "Women\'s degree college offering Arts, Science and Commerce at Aagaram Village, Arni, Thiruvannamalai District, Tamil Nadu.",
+        "description": "Women's degree college offering Arts, Science and Commerce at Aagaram Village, Arni, Thiruvannamalai District, Tamil Nadu.",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Aagaram Village and Post",
@@ -58,127 +58,117 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="topbar">
-      <span
-        >&#128222;&nbsp;98942 18555 &nbsp;|&nbsp; 84380 01755 &nbsp;|&nbsp;
-        86677 26979 &nbsp;&nbsp;&#9993;&nbsp;arnissscollege@gmail.com</span
-      >
-      <span>
-        <a href="index.html">Home</a>
-        <a href="academics.html#admissions">Apply Now</a>
-        <a href="contact.html">Contact</a>
-      </span>
-    </div>
-    <nav>
-      <div class="nav-inner">
-        <a class="nav-brand" href="index.html">
-          <div class="nav-logo">
-            <img
-              src="images/logo.png"
-              alt="Computer Lab at SSS College for Women Arni"
-              style="
-                width: 100%;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 10px;
-              "
-            />
-          </div>
-          <div class="nav-title">
-            <strong>SSS College for Women</strong>
-            <span>Arni, Thiruvannamalai District</span>
-          </div>
-        </a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="campus.html">Campus Life</a></li>
-          <li><a href="contact.html">Contact</a></li>
+    <!-- Header + notice bar loaded from header.html by main.js -->
+    <div id="site-header-placeholder"></div>
 
-          <li>
-            <a href="academics.html#admissions" class="apply-btn"
-              >&#128394; Apply Now</a
-            >
-          </li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </nav>
-    <div class="notice-bar">
-      <span class="nb-label">&#128226; NOTICE</span>
-      <marquee behavior="scroll" direction="left">
-        &#127891; Admissions open for 2025-26 &nbsp;|&nbsp; 49 Students scored
-        First Class with Distinction in 2022-2025 Batch &nbsp;|&nbsp;
-        Thiruvalluvar University Rank Holders: A.Puvana (B.Com V Rank),
-        R.Lavanya (B.Com CA IX Rank), A.Vimala (B.A.Tamil IV Rank) &nbsp;|&nbsp;
-        Fee concession available for HSC 900+ students &nbsp;|&nbsp; Transport
-        available from Arni, Vellore, Polur, Chetpet and 20+ locations
-      </marquee>
-    </div>
-
-    <!-- HERO -->
+    <!-- ═══════════════════════════════════════════
+         HERO — Big name title bar + foreground <img> carousel
+    ═══════════════════════════════════════════ -->
     <section class="hero">
-      <div>
-        <div class="hero-badge">
-          &#127891; Admissions Open 2025–26 &nbsp;|&nbsp; Limited Seats
-        </div>
-        <h1>Where Women <em>Rise</em> to Their True Potential</h1>
-        <p class="tagline">
-          SSS College for Women, Arni — part of the SSS Group of Institutions,
-          dedicated exclusively to women's higher education.
-        </p>
-        <p class="loc">
-          &#128205; Aagaram Village, Arni Taluk, Tiruvannamalai District – 632
-          316 &nbsp;|&nbsp; (Arni to Chetpet Road)
-        </p>
-        <div class="hero-btns">
-          <a href="academics.html#admissions" class="btn-gold"
-            >&#128394; Apply for Admission</a
-          >
-          <a href="academics.html" class="btn-outline"
-            >&#128218; View Courses</a
-          >
-        </div>
-        <div class="hero-phones">
-          Call us:
-          <a href="tel:+919894218555" onclick="trackCall()">98942 18555</a>
-          &nbsp;|&nbsp;
-          <a href="tel:+918438001755" onclick="trackCall()">84380 01755</a>
-          &nbsp;|&nbsp;
-          <a href="tel:+918667726979" onclick="trackCall()">86677 26979</a>
-        </div>
-      </div>
-      <div class="hero-img-grid">
-        <div class="h-img tall">
-          <!-- REPLACE: Main college building photo -->
-          <div class="img-placeholder" style="height: 292px">
-            <img
-              src="images/college-building.jpg"
-              alt="Computer Lab at SSS College for Women Arni"
-            />
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 12px">
-          <div class="h-img">
-            <!-- REPLACE: Convocation/graduation photo -->
-            <div class="img-placeholder" style="height: 140px">
+      <!-- Title bar: big college name above carousel -->
+
+      <!-- Carousel: real foreground <img> tags — 100% clarity -->
+      <div class="carousel-wrap">
+        <div class="carousel-viewport" id="carouselViewport">
+          <div class="carousel-track" id="carouselSlides">
+            <div class="carousel-slide">
+              <img
+                src="images/college-building.jpg"
+                alt="SSS College for Women – College Building, Arni"
+              />
+            </div>
+            <div class="carousel-slide">
               <img
                 src="images/college-entrance.jpg"
-                alt="Computer Lab at SSS College for Women Arni"
+                alt="SSS College for Women – College Entrance"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/computer-lab-1.png"
+                alt="SSS College for Women – AC Computer Lab"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/library-1.png"
+                alt="SSS College for Women – Automated Library"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/pongal_celebration.jpg"
+                alt="SSS College for Women – Pongal Celebration"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/sportsday.jpg"
+                alt="SSS College for Women – Sports Day"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/laptop_distribution.jpg"
+                alt="SSS College for Women – Laptop Distribution"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/marching.jpg"
+                alt="SSS College for Women – Students Marching"
               />
             </div>
           </div>
-          <div class="h-img">
-            <!-- REPLACE: Campus/students photo -->
-            <div class="img-placeholder" style="height: 140px">
-              <img
-                src="images/pongal_celebration.jpg"
-                alt="Computer Lab at SSS College for Women Arni"
-              />
-            </div>
+        </div>
+        <!-- Arrows -->
+        <button
+          class="carousel-arrow carousel-prev"
+          id="carouselPrev"
+          aria-label="Previous image"
+        >
+          &#8249;
+        </button>
+        <button
+          class="carousel-arrow carousel-next"
+          id="carouselNext"
+          aria-label="Next image"
+        >
+          &#8250;
+        </button>
+        <!-- Dots -->
+        <div class="carousel-dots" id="carouselDots"></div>
+        <!-- Caption bar below image -->
+        <div class="carousel-caption" id="carouselCaption">
+          SSS College for Women – College Building, Arni
+        </div>
+      </div>
+
+      <!-- CTA strip below carousel -->
+      <div class="hero-cta-strip">
+        <div class="hero-cta-inner">
+          <div class="hero-phones">
+            <span>&#128222;</span>
+            <a href="tel:+919894218555" onclick="trackCall()">98942 18555</a>
+            <span class="pipe">|</span>
+            <a href="tel:+918438001755" onclick="trackCall()">84380 01755</a>
+            <span class="pipe">|</span>
+            <a href="tel:+918667726979" onclick="trackCall()">86677 26979</a>
+          </div>
+          <div class="hero-btns">
+            <a href="academics.html#admissions" class="btn-primary"
+              >&#128394; Apply for Admission</a
+            >
+            <a href="academics.html" class="btn-outline-pink"
+              >&#128218; View Courses</a
+            >
+            <a
+              href="https://wa.me/919894218555?text=Hello%2C%20I%20want%20to%20know%20about%20admissions%20at%20SSS%20College%20for%20Women%20Arni"
+              class="btn-wa"
+              onclick="trackWA()"
+              target="_blank"
+              >&#128172; WhatsApp</a
+            >
           </div>
         </div>
       </div>
@@ -187,24 +177,23 @@
     <!-- ACHIEVEMENT STRIP -->
     <div class="ach-strip">
       <div class="ach-item">
-        <span class="a-num">49</span
-        ><span class="a-lbl"
+        <span class="a-num">49</span>
+        <span class="a-lbl"
           >First Class with Distinction<br />2022–2025 Batch</span
         >
       </div>
       <div class="ach-item">
-        <span class="a-num">3</span
-        ><span class="a-lbl">Thiruvalluvar University<br />Rank Holders</span>
+        <span class="a-num">3</span>
+        <span class="a-lbl">Thiruvalluvar University<br />Rank Holders</span>
       </div>
       <div class="ach-item">
-        <span class="a-num">9</span
-        ><span class="a-lbl">UG + PG Courses<br />Available</span>
+        <span class="a-num">9</span>
+        <span class="a-lbl">UG + PG Courses<br />Available</span>
       </div>
       <div class="ach-item">
-        <span class="a-num">20+</span
-        ><span class="a-lbl">Transport Routes<br />Across the District</span>
+        <span class="a-num">20+</span>
+        <span class="a-lbl">Transport Routes<br />Across the District</span>
       </div>
-      <!--<div class="ach-item"><span class="a-num" id="heroVisitors">—</span><span class="a-lbl">People Visited<br>This Website</span></div>-->
     </div>
 
     <!-- ABOUT SNIPPET -->
@@ -234,12 +223,12 @@
           </p>
           <a
             href="about.html"
-            class="btn-gold"
-            style="display: inline-flex; margin-top: 8px"
+            class="btn-primary"
+            style="display: inline-flex; margin-top: 12px"
             >Read More About Us &#8594;</a
           >
         </div>
-        <div class="about-green">
+        <div class="about-purple">
           <h3>Why Choose SSS College for Women?</h3>
           <div class="about-item">
             <div class="about-icon">&#127979;</div>
@@ -256,8 +245,8 @@
             <div>
               <strong>24-Hour AC Computer Lab</strong>
               <p>
-                Fully equipped, air-conditioned computer lab with solar backup
-                ensuring uninterrupted internet access.
+                Fully equipped, air-conditioned with solar backup ensuring
+                uninterrupted internet access.
               </p>
             </div>
           </div>
@@ -305,7 +294,7 @@
       </p>
       <div class="card-grid">
         <div class="card">
-          <div class="card-img">&#128187;</div>
+          <div class="card-icon">&#128187;</div>
           <div class="card-body">
             <h3>B.Sc. Computer Science</h3>
             <p>
@@ -316,7 +305,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#129302;</div>
+          <div class="card-icon">&#129302;</div>
           <div class="card-body">
             <h3>B.Sc. Artificial Intelligence</h3>
             <p>
@@ -327,7 +316,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#128202;</div>
+          <div class="card-icon">&#128202;</div>
           <div class="card-body">
             <h3>B.C.A.</h3>
             <p>
@@ -338,7 +327,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#128176;</div>
+          <div class="card-icon">&#128176;</div>
           <div class="card-body">
             <h3>B.Com & B.Com (CA)</h3>
             <p>
@@ -349,7 +338,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#128188;</div>
+          <div class="card-icon">&#128188;</div>
           <div class="card-body">
             <h3>B.B.A.</h3>
             <p>
@@ -360,7 +349,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#127774;</div>
+          <div class="card-icon">&#127774;</div>
           <div class="card-body">
             <h3>B.Sc. Chemistry</h3>
             <p>
@@ -371,7 +360,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#128216;</div>
+          <div class="card-icon">&#128216;</div>
           <div class="card-body">
             <h3>B.A. Tamil</h3>
             <p>
@@ -382,7 +371,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-img">&#127891;</div>
+          <div class="card-icon">&#127891;</div>
           <div class="card-body">
             <h3>M.Sc. Computer Science</h3>
             <p>
@@ -393,8 +382,8 @@
           </div>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 28px">
-        <a href="academics.html" class="btn-gold"
+      <div style="text-align: center; margin-top: 32px">
+        <a href="academics.html" class="btn-primary"
           >View Full Fee Details & Admissions &#8594;</a
         >
       </div>
@@ -411,10 +400,9 @@
       <div class="rank-grid">
         <div class="rank-card">
           <div class="medal">&#127941;</div>
-          <!-- REPLACE with rank holder photo -->
           <img
             src="images/rank-puvana.png"
-            alt="Computer Lab at SSS College for Women Arni"
+            alt="A. Bhuvana – University Rank Holder"
             style="
               width: 100%;
               height: 160px;
@@ -430,7 +418,7 @@
           <div class="medal">&#127941;</div>
           <img
             src="images/rank-lavanya.png"
-            alt="Computer Lab at SSS College for Women Arni"
+            alt="R. Lavanya – University Rank Holder"
             style="
               width: 100%;
               height: 160px;
@@ -446,7 +434,7 @@
           <div class="medal">&#127941;</div>
           <img
             src="images/rank-vimala.png"
-            alt="Computer Lab at SSS College for Women Arni"
+            alt="A. Vimala – University Rank Holder"
             style="
               width: 100%;
               height: 160px;
@@ -458,10 +446,7 @@
           <p>B.A. Tamil</p>
           <span class="rank-badge">University IV Rank</span>
         </div>
-        <div
-          class="rank-card"
-          style="background: linear-gradient(135deg, #8a6800, #c8a000)"
-        >
+        <div class="rank-card rank-card-gold">
           <div class="medal">&#11088;</div>
           <h3>49 Students</h3>
           <p>First Class with Distinction</p>
@@ -470,7 +455,7 @@
       </div>
     </section>
 
-    <!-- CAMPUS LIFE SNIPPET -->
+    <!-- CAMPUS LIFE -->
     <section class="section alt">
       <div class="s-label">Campus Life</div>
       <h2 class="s-title">World-Class Facilities for Women</h2>
@@ -482,13 +467,8 @@
         <div class="facility-card">
           <img
             src="images/computer-lab-1.png"
-            alt="Computer Lab at SSS College for Women Arni"
-            style="
-              width: 100%;
-
-              object-fit: cover;
-              border-radius: 10px;
-            "
+            alt="AC Computer Lab at SSS College for Women Arni"
+            style="width: 100%; height: 190px; object-fit: cover"
           />
           <div class="facility-body">
             <h3>AC Computer Lab</h3>
@@ -501,13 +481,8 @@
         <div class="facility-card">
           <img
             src="images/library-1.png"
-            alt="Computer Lab at SSS College for Women Arni"
-            style="
-              width: 100%;
-
-              object-fit: cover;
-              border-radius: 10px;
-            "
+            alt="Automated Library at SSS College for Women Arni"
+            style="width: 100%; height: 190px; object-fit: cover"
           />
           <div class="facility-body">
             <h3>Automated Library</h3>
@@ -518,7 +493,7 @@
           </div>
         </div>
         <div class="facility-card">
-          <div class="facility-img">&#127968;</div>
+          <div class="facility-icon">&#127968;</div>
           <div class="facility-body">
             <h3>Hostel</h3>
             <p>
@@ -529,7 +504,7 @@
         </div>
       </div>
       <div style="text-align: center; margin-top: 28px">
-        <a href="campus.html" class="btn-gold"
+        <a href="campus.html" class="btn-primary"
           >Explore All Facilities &#8594;</a
         >
       </div>
@@ -544,10 +519,9 @@
         celebrations.
       </p>
       <div class="gallery-strip">
-        <!-- REPLACE each with actual college photos -->
         <img
           src="images/pongal_celebration.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Pongal Celebration at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -557,7 +531,7 @@
         />
         <img
           src="images/pongal_celebration1.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Cultural Event at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -567,7 +541,7 @@
         />
         <img
           src="images/women.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Students at SSS College for Women Arni"
           style="
             width: 100%;
             height: 160px;
@@ -577,7 +551,7 @@
         />
         <img
           src="images/sportsday.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Sports Day at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -587,7 +561,7 @@
         />
         <img
           src="images/playground.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Playground at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -597,7 +571,7 @@
         />
         <img
           src="images/laptop_distribution.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Laptop Distribution at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -607,7 +581,7 @@
         />
         <img
           src="images/marching.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Students Marching at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -617,7 +591,7 @@
         />
         <img
           src="images/marching1.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="NCC Parade at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -627,7 +601,7 @@
         />
         <img
           src="images/classrooms.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Classrooms at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -637,7 +611,7 @@
         />
         <img
           src="images/inauguration.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="Inauguration at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -647,7 +621,7 @@
         />
         <img
           src="images/1st year students.jpg"
-          alt="Computer Lab at SSS College for Women Arni"
+          alt="First Year Students at SSS College"
           style="
             width: 100%;
             height: 160px;
@@ -658,7 +632,7 @@
       </div>
     </section>
 
-    <!-- ENQUIRY SECTION -->
+    <!-- ENQUIRY -->
     <section class="section alt">
       <div class="two-col">
         <div>
@@ -711,7 +685,10 @@
             </div>
           </div>
           <div class="contact-btns" style="margin-top: 20px">
-            <a href="tel:+919894218555" class="btn-green" onclick="trackCall()"
+            <a
+              href="tel:+919894218555"
+              class="btn-primary"
+              onclick="trackCall()"
               >&#128222; Call Now</a
             >
             <a
@@ -726,16 +703,16 @@
         <div class="enquiry-box">
           <h3>&#128231; Send an Enquiry</h3>
           <div class="form-group">
-            <label>Full Name</label
-            ><input
+            <label>Full Name</label>
+            <input
               type="text"
               id="eq-name"
               placeholder="Enter your full name"
             />
           </div>
           <div class="form-group">
-            <label>Mobile Number</label
-            ><input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" />
+            <label>Mobile Number</label>
+            <input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" />
           </div>
           <div class="form-group">
             <label>Course Interested In</label>
@@ -753,8 +730,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Message (Optional)</label
-            ><textarea
+            <label>Message (Optional)</label>
+            <textarea
               id="eq-msg"
               placeholder="Any questions about admissions, fees, hostel..."
             ></textarea>
@@ -766,253 +743,9 @@
       </div>
     </section>
 
-    <div class="admin-overlay" id="adminOverlay">
-      <div class="admin-box">
-        <button class="a-close" onclick="closeAdmin()">&#10005;</button>
-        <h2>&#128274; Admin Login</h2>
-        <p class="admin-sub">SSS College for Women &mdash; Management Portal</p>
-        <div class="a-err" id="adminErr">
-          Incorrect credentials. Please try again.
-        </div>
-        <input
-          type="text"
-          id="adminUser"
-          placeholder="Username"
-          autocomplete="off"
-        />
-        <input type="password" id="adminPass" placeholder="Password" />
-        <button class="admin-login-btn" onclick="doLogin()">
-          Login to Dashboard
-        </button>
-      </div>
-    </div>
-    <div class="dashboard" id="dashboard">
-      <div class="d-nav">
-        <div class="d-nav-left">
-          <span>&#128200; SSS College &mdash; Admin Dashboard</span>
-          <button
-            class="d-tab active"
-            data-tab="analytics"
-            onclick="showTab('analytics')"
-          >
-            Analytics
-          </button>
-          <button
-            class="d-tab"
-            data-tab="enquiries"
-            onclick="showTab('enquiries')"
-          >
-            Enquiries
-          </button>
-          <button class="d-tab" data-tab="update" onclick="showTab('update')">
-            Update Content
-          </button>
-        </div>
-        <button class="d-logout" onclick="closeDashboard()">
-          &#10005; Close
-        </button>
-      </div>
-      <div class="d-body">
-        <div class="d-title">Welcome, Admin</div>
-        <div class="d-sub" id="d-date"></div>
+    <!-- Footer + admin overlay + dashboard loaded from footer.html by main.js -->
+    <div id="site-footer-placeholder"></div>
 
-        <!-- ANALYTICS PANEL -->
-        <div class="d-panel active" id="panel-analytics">
-          <div class="metrics">
-            <div class="metric">
-              <div class="m-icon">&#128065;</div>
-              <span class="m-val" id="d-visitors">0</span>
-              <div class="m-lbl">Total Visitors</div>
-            </div>
-            <div class="metric">
-              <div class="m-icon">&#128231;</div>
-              <span class="m-val" id="d-enquiries">0</span>
-              <div class="m-lbl">Enquiries Received</div>
-            </div>
-            <div class="metric">
-              <div class="m-icon">&#128222;</div>
-              <span class="m-val" id="d-calls">0</span>
-              <div class="m-lbl">Calls from Website</div>
-            </div>
-            <div class="metric">
-              <div class="m-icon">&#128172;</div>
-              <span class="m-val" id="d-wa">0</span>
-              <div class="m-lbl">WhatsApp Clicks</div>
-            </div>
-          </div>
-          <div class="two-dash">
-            <div class="d-section">
-              <h3>&#128200; Daily Visitors — Last 7 Days</h3>
-              <div id="visitorChart"></div>
-            </div>
-            <div class="d-section">
-              <h3>&#127758; Visitors by Location</h3>
-              <ul class="loc-list" id="locationList"></ul>
-            </div>
-          </div>
-          <div class="d-section">
-            <h3>&#128196; Most Visited Pages</h3>
-            <div id="pagesChart"></div>
-          </div>
-        </div>
-
-        <!-- ENQUIRIES PANEL -->
-        <div class="d-panel" id="panel-enquiries">
-          <div class="d-section">
-            <h3>&#128231; All Enquiries</h3>
-            <table class="eq-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Phone</th>
-                  <th>Course</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="enquiryTable"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- UPDATE CONTENT PANEL -->
-        <div class="d-panel" id="panel-update">
-          <div class="d-section">
-            <h3>&#9999; Update Website Content</h3>
-            <p
-              style="font-size: 13px; color: var(--muted); margin-bottom: 18px"
-            >
-              Edit key information. Contact your web developer to publish
-              changes permanently.
-            </p>
-            <div class="update-grid">
-              <div class="u-field">
-                <label>Principal Name</label
-                ><input
-                  type="text"
-                  placeholder="Dr. S. Lakshmi, M.Com., M.Phil., Ph.D."
-                />
-              </div>
-              <div class="u-field">
-                <label>Admission Notice</label
-                ><input type="text" placeholder="Admissions open for 2025-26" />
-              </div>
-              <div class="u-field">
-                <label>Phone Number</label
-                ><input type="text" placeholder="98942 18555 / 84380 01755" />
-              </div>
-              <div class="u-field">
-                <label>Latest Achievement</label
-                ><input
-                  type="text"
-                  placeholder="e.g. 49 students First Class with Distinction"
-                />
-              </div>
-              <div class="u-field">
-                <label>Notice Board Message</label
-                ><textarea
-                  placeholder="Add a new notice for students..."
-                ></textarea>
-              </div>
-              <div class="u-field">
-                <label>Upcoming Event</label
-                ><textarea
-                  placeholder="e.g. Annual Day on 15 Aug 2025..."
-                ></textarea>
-              </div>
-            </div>
-            <button class="btn-save" onclick="saveContent()">
-              &#10003; Save Changes
-            </button>
-            <span class="save-msg" id="saveMsg"
-              >&#10003; Saved! Contact developer to publish.</span
-            >
-            <p style="font-size: 12px; color: var(--muted); margin-top: 14px">
-              &#128274; Admin Credentials &mdash; Username:
-              <strong>sssadmin</strong> &nbsp;|&nbsp; Default Password:
-              <strong>sss@2025</strong> &mdash; Change this after first login.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="f-grid">
-        <div class="f-brand">
-          <strong>SSS College for Women, Arni</strong>
-          <p>
-            Part of SSS Group of Institutions, founded by Thiru A.K. Natarajan.
-            Empowering women through quality education at Aagaram Village, Arni,
-            Thiruvannamalai District.
-          </p>
-          <div class="f-contact">
-            <span
-              >&#128222;
-              <a href="tel:+919894218555">98942 18555</a> &nbsp;|&nbsp;
-              <a href="tel:+918438001755">84380 01755</a> &nbsp;|&nbsp;
-              <a href="tel:+918667726979">86677 26979</a></span
-            >
-            <span
-              >&#9993;
-              <a href="mailto:arnissscollege@gmail.com"
-                >arnissscollege@gmail.com</a
-              ></span
-            >
-            <span
-              >&#128205; Aagaram Village &amp; Post, Arni Taluk, T.V.Malai
-              District &ndash; 632 316</span
-            >
-          </div>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <ul class="f-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="academics.html">Academics</a></li>
-            <li><a href="campus.html">Campus Life</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="academics.html#admissions">Apply Now</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Courses</h4>
-          <ul class="f-links">
-            <li><a href="academics.html">B.Sc. Computer Science</a></li>
-            <li><a href="academics.html">B.Sc. Artificial Intelligence</a></li>
-            <li><a href="academics.html">B.C.A.</a></li>
-            <li><a href="academics.html">B.Com &amp; B.Com (CA)</a></li>
-            <li><a href="academics.html">B.B.A.</a></li>
-            <li><a href="academics.html">M.Sc. Computer Science</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>SSS Group</h4>
-          <ul class="f-links">
-            <li><a href="#">SSS College for Women, Arni</a></li>
-            <li><a href="#">SSS College of Arts &amp; Science, Arcot</a></li>
-            <li><a href="#">SSS Matriculation School, Arcot</a></li>
-            <li><a href="about.html#chairman">About the Chairman</a></li>
-            <li><a href="about.html#vision">Vision &amp; Mission</a></li>
-            <li><a href="contact.html">Find Us on Map</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="f-bottom">
-        <span
-          >&#169; 2025 SSS College for Women, Arni. All rights reserved.</span
-        >
-        <span
-          >Designed by
-          <a href="https://budgetwebsitedevelopersvellore.org" target="_blank"
-            >Budget Website Developers, Vellore</a
-          ></span
-        >
-        <span class="f-admin-trigger" onclick="openAdmin()" title="Admin"
-          >&#9881;</span
-        >
-      </div>
-    </footer>
     <script src="main.js"></script>
   </body>
 </html>
