@@ -7,30 +7,19 @@
 :root {
   /* ── PINK / PURPLE PALETTE ── */
   --pink: #c2185b;
-  /* primary deep pink */
   --pink2: #e91e8c;
-  /* bright pink */
   --pink3: #fce4ec;
-  /* lightest pink tint */
   --pink4: #f48fb1;
-  /* mid pink */
   --purple: #6a1b9a;
-  /* deep purple */
   --purple2: #9c27b0;
-  /* medium purple */
   --purple3: #f3e5f5;
-  /* lightest purple tint */
   --purple4: #ce93d8;
-  /* mid purple */
   --gold: #c8a000;
-  /* kept for rank cards */
   --gold2: #f5d020;
   --text: #1a1a1a;
   --muted: #555;
   --border: #e0d0e8;
-  /* purple-tinted border */
   --bg: #fdf6ff;
-  /* very light purple-pink bg */
 }
 
 body {
@@ -55,7 +44,6 @@ img {
   background: #fff;
 }
 
-/* Row 1: Identity — scrolls away with page, NOT sticky */
 .header-identity {
   background: #fff;
   border-bottom: 1px solid var(--border);
@@ -83,7 +71,6 @@ img {
   object-fit: contain;
 }
 
-/* College name — BIG center */
 .header-college-name {
   text-align: center;
 }
@@ -116,7 +103,6 @@ img {
   margin-top: 3px;
 }
 
-/* Contact info right */
 .header-contact-info {
   text-align: right;
   flex-shrink: 0;
@@ -162,7 +148,7 @@ img {
   opacity: .9;
 }
 
-/* Row 2: Nav menu bar — ONLY this sticks at top when scrolling */
+/* Row 2: Nav menu bar */
 .header-nav {
   background: linear-gradient(90deg, var(--purple) 0%, var(--pink) 100%);
   position: sticky;
@@ -225,6 +211,72 @@ img {
   display: block;
 }
 
+/* ── SUBMENUS (NEW) ── */
+.has-sub {
+  position: relative;
+}
+
+.has-sub>a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sub-arrow {
+  font-size: 9px;
+  transition: transform .2s;
+}
+
+.has-sub:hover .sub-arrow {
+  transform: rotate(180deg);
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 240px;
+  max-height: 70vh;
+  overflow-y: auto;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 30px rgba(106, 27, 154, .25);
+  z-index: 600;
+  border-top: 3px solid var(--pink2);
+  list-style: none;
+  padding: 6px 0;
+}
+
+.has-sub:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu li a {
+  display: block;
+  padding: 9px 18px;
+  font-size: 13px;
+  color: var(--text) !important;
+  opacity: 1 !important;
+  border-bottom: 1px solid #f4eaf8;
+  white-space: nowrap;
+}
+
+.sub-menu li a:hover {
+  background: var(--pink3);
+  color: var(--pink) !important;
+}
+
+.sub-divider {
+  padding: 8px 18px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  background: var(--purple3);
+}
+
 /* ── NOTICE BAR ── */
 .notice-bar {
   background: #3a0040;
@@ -250,14 +302,11 @@ img {
   font-size: 13px;
 }
 
-/* ═══════════════════════════════════════════════
-   HERO — Title bar + foreground image carousel
-═══════════════════════════════════════════════ */
+/* ═══════ HERO ═══════ */
 .hero {
   background: #fff;
 }
 
-/* Title bar above carousel */
 .hero-title-bar {
   background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
   padding: 28px 3% 22px;
@@ -282,7 +331,6 @@ img {
   margin-bottom: 14px;
 }
 
-/* BIG college name */
 .hero-college-name {
   display: flex;
   align-items: baseline;
@@ -314,7 +362,6 @@ img {
   margin: 0;
 }
 
-/* Carousel wrap */
 .carousel-wrap {
   position: relative;
   overflow: hidden;
@@ -333,7 +380,6 @@ img {
   will-change: transform;
 }
 
-/* Each slide: foreground <img>, NOT background */
 .carousel-slide {
   flex: 0 0 100%;
   min-width: 100%;
@@ -348,7 +394,6 @@ img {
   line-height: 0;
 }
 
-/* Arrows */
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -382,7 +427,6 @@ img {
   right: 16px;
 }
 
-/* Dots */
 .carousel-dots {
   position: absolute;
   bottom: 48px;
@@ -410,7 +454,6 @@ img {
   border-radius: 5px;
 }
 
-/* Caption bar */
 .carousel-caption {
   background: linear-gradient(90deg, var(--purple), var(--pink));
   color: rgba(255, 255, 255, .9);
@@ -420,7 +463,6 @@ img {
   line-height: 1.4;
 }
 
-/* CTA strip below carousel */
 .hero-cta-strip {
   background: var(--bg);
   border-top: 3px solid var(--purple);
@@ -580,7 +622,6 @@ img {
   margin-bottom: 36px;
 }
 
-/* ── TWO COL ── */
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -594,7 +635,6 @@ img {
   gap: 24px;
 }
 
-/* ── CARDS ── */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -653,7 +693,6 @@ img {
   border: 1px solid var(--pink4);
 }
 
-/* ── ABOUT BOX ── */
 .about-purple {
   background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
   color: #fff;
@@ -696,7 +735,6 @@ img {
   opacity: .85;
 }
 
-/* ── RANK CARDS ── */
 .rank-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -744,7 +782,6 @@ img {
   border: 1px solid rgba(255, 255, 255, .4);
 }
 
-/* ── FACILITY CARDS ── */
 .facility-card {
   background: #fff;
   border: 1px solid var(--border);
@@ -785,7 +822,6 @@ img {
   line-height: 1.65;
 }
 
-/* ── GALLERY ── */
 .gallery-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -793,7 +829,6 @@ img {
   margin-top: 20px;
 }
 
-/* ── CONTACT ── */
 .c-row {
   display: flex;
   gap: 14px;
@@ -936,7 +971,7 @@ img {
   max-width: 600px;
 }
 
-/* ── PERSON GRID (about page) ── */
+/* ── PERSON GRID ── */
 .person-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -1009,7 +1044,7 @@ img {
   font-weight: 600;
 }
 
-/* ── CHAIRMAN (about page) ── */
+/* ── CHAIRMAN ── */
 .chairman-wrap {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -1056,7 +1091,7 @@ img {
   line-height: 1.8;
 }
 
-/* ── VM BOXES (about page) ── */
+/* ── VM BOXES ── */
 .vm-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1138,7 +1173,7 @@ img {
   color: var(--muted);
 }
 
-/* ── TRUSTEES (about page) ── */
+/* ── TRUSTEES ── */
 .trustee-table {
   width: 100%;
   border-collapse: collapse;
@@ -1172,7 +1207,7 @@ img {
   -webkit-overflow-scrolling: touch;
 }
 
-/* ── FEE TABLE (academics page) ── */
+/* ── FEE TABLE ── */
 .fee-table {
   width: 100%;
   border-collapse: collapse;
@@ -1227,7 +1262,7 @@ img {
   margin-bottom: 5px;
 }
 
-/* ── ADMISSION STEPS (academics page) ── */
+/* ── STEPS ── */
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1310,7 +1345,7 @@ img {
   transform: translateY(-2px);
 }
 
-/* ── TRANSPORT (campus page) ── */
+/* ── TRANSPORT ── */
 .route-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1333,7 +1368,7 @@ img {
   gap: 5px;
 }
 
-/* ── MAP WRAP (contact page) ── */
+/* ── MAP WRAP ── */
 .map-wrap {
   border-radius: 14px;
   overflow: hidden;
@@ -1341,7 +1376,7 @@ img {
   margin-top: 32px;
 }
 
-/* ── FAQ (contact page) ── */
+/* ── FAQ ── */
 .faq-list {
   max-width: 760px;
 }
@@ -1873,6 +1908,138 @@ footer h4 {
 }
 
 /* ═══════════════════════════════════════════════
+   NEW: TAB / SUBMENU CONTENT SYSTEM
+═══════════════════════════════════════════════ */
+.tab-page-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tab-sidebar {
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  align-self: start;
+  position: sticky;
+  top: 110px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+
+.tab-sidebar-group {
+  margin-bottom: 18px;
+}
+
+.tab-sidebar-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  padding: 0 20px;
+  margin-bottom: 8px;
+}
+
+.tab-link {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  color: var(--text);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+
+.tab-link:hover {
+  background: var(--pink3);
+  color: var(--pink);
+}
+
+.tab-link.active {
+  background: var(--pink3);
+  border-left-color: var(--pink2);
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.tab-content-area {
+  padding: 32px 4%;
+  min-width: 0;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn .25s ease;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel h2.s-title {
+  margin-top: 0;
+}
+
+/* Mobile tab sidebar becomes a horizontal scroll chip bar */
+@media(max-width: 900px) {
+  .tab-page-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-sidebar {
+    position: static;
+    max-height: none;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 12px 4%;
+    gap: 8px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tab-sidebar-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .tab-sidebar-group-title {
+    display: none;
+  }
+
+  .tab-link {
+    border-left: none;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    flex-shrink: 0;
+  }
+
+  .tab-link.active {
+    border-left: none;
+    background: var(--pink2);
+    color: #fff;
+  }
+}
+
+/* ═══════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ═══════════════════════════════════════════════ */
 
@@ -1908,6 +2075,8 @@ footer h4 {
     right: 0;
     padding: 6px 0;
     z-index: 400;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 
   .nav-links.open {
@@ -1917,6 +2086,25 @@ footer h4 {
   .nav-links li a {
     padding: 12px 18px;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .has-sub .sub-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    background: rgba(0, 0, 0, .15);
+    display: none;
+  }
+
+  .has-sub.sub-open .sub-menu {
+    display: block;
+  }
+
+  .sub-menu li a {
+    color: #eee !important;
+    padding-left: 36px;
+    border-bottom-color: rgba(255, 255, 255, .08);
   }
 
   .hamburger {
@@ -1966,10 +2154,6 @@ footer h4 {
     padding: 26px 4%;
   }
 
-  .hero-content {
-    padding: 40px 4% 36px;
-  }
-
   .apply-cta {
     padding: 24px 20px;
     flex-direction: column;
@@ -1979,89 +2163,11 @@ footer h4 {
   .apply-cta h3 {
     font-size: 17px;
   }
-
-  .d-nav {
-    height: auto;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 16px;
-    gap: 10px;
-  }
-
-  .d-nav-left {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .d-nav span {
-    font-size: 13px;
-  }
-
-  .d-tab {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-
-  .d-logout {
-    align-self: flex-end;
-  }
-
-  .d-body {
-    padding: 16px;
-  }
-
-  .enquiry-box {
-    padding: 20px 16px;
-  }
-
-  .about-purple {
-    padding: 22px 18px;
-  }
 }
 
 @media(max-width:480px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    padding: 6px 4%;
-  }
-
-  .topbar a {
-    margin-left: 0;
-    margin-right: 10px;
-  }
-
-  .nav-inner {
-    padding: 0 4%;
-  }
-
-  .nav-title strong {
-    font-size: 12px;
-  }
-
-  .nav-title span {
-    font-size: 10px;
-  }
-
   .nav-links {
     top: 60px;
-  }
-
-  .notice-bar {
-    padding: 6px 4%;
-  }
-
-  .notice-bar marquee {
-    font-size: 12px;
-  }
-
-  .hero-content {
-    padding: 28px 4% 36px;
-  }
-
-  .hero-sss {
-    letter-spacing: -1px;
   }
 
   .hero-btns {
@@ -2071,19 +2177,10 @@ footer h4 {
   }
 
   .hero-btns .btn-primary,
-  .hero-btns .btn-outline-white,
+  .hero-btns .btn-outline-pink,
   .hero-btns .btn-wa {
     width: 100%;
     justify-content: center;
-  }
-
-  .section {
-    padding: 32px 4%;
-  }
-
-  .s-sub {
-    font-size: 14px;
-    margin-bottom: 24px;
   }
 
   .steps {
@@ -2092,35 +2189,6 @@ footer h4 {
 
   .rank-grid {
     grid-template-columns: 1fr;
-  }
-
-  .fee-table,
-  .trustee-table,
-  .eq-table {
-    min-width: 520px;
-  }
-
-  .table-scroll,
-  .fee-table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-  }
-
-  section .fee-table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .apply-cta {
-    padding: 20px 16px;
-    border-radius: 10px;
-  }
-
-  .btn-white {
-    padding: 11px 18px;
-    font-size: 13px;
   }
 
   .card-grid {
@@ -2132,62 +2200,7 @@ footer h4 {
     gap: 10px;
   }
 
-  .metric {
-    padding: 14px 12px;
-  }
-
-  .metric .m-val {
-    font-size: 24px;
-  }
-
   .f-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .f-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .faq-q {
-    font-size: 14px;
-  }
-
-  .fee-note {
-    padding: 16px 14px;
-  }
-
-  .admin-box {
-    padding: 24px 18px;
-    border-radius: 12px;
-  }
-
-  .d-nav {
-    height: auto;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 14px;
-    gap: 8px;
-  }
-
-  .d-nav-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    width: 100%;
-  }
-
-  .d-logout {
-    width: 100%;
-    text-align: center;
-  }
-
-  .d-body {
-    padding: 12px;
-  }
-
-  .update-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2207,21 +2220,8 @@ footer h4 {
     grid-template-columns: 1fr 1fr;
   }
 
-  .ach-strip {
-    gap: 10px;
-    padding: 18px 4%;
-  }
-
-  .ach-item .a-num {
-    font-size: 24px;
-  }
-
   .vm-grid {
     grid-template-columns: 1fr;
-  }
-
-  .vm-box {
-    padding: 18px;
   }
 
   .contact-btns {
@@ -2232,39 +2232,5 @@ footer h4 {
   .btn-wa {
     width: 100%;
     justify-content: center;
-  }
-}
-
-@media(max-width:360px) {
-  .nav-title span {
-    display: none;
-  }
-
-  .topbar {
-    font-size: 11px;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .rank-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .person-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .route-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
   }
 }

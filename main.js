@@ -1,12 +1,9 @@
 /* ═══════════════════════════════════════════════════════
    SHARED HEADER + FOOTER LOADER
-   Fetches header.html and footer.html into every page.
-   Active nav link is set automatically from the filename.
 ═══════════════════════════════════════════════════════ */
 (function(){
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  // ── Load header ──
   var headerEl = document.getElementById('site-header-placeholder');
   if(headerEl){
     fetch('header.html')
@@ -14,14 +11,12 @@
       .then(function(html){
         headerEl.outerHTML = html;
 
-        // Set active nav link based on current page
-        document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
+        document.querySelectorAll('.nav-links > li > a[data-page]').forEach(function(a){
           if(a.getAttribute('data-page') === currentPage){
             a.classList.add('active');
           }
         });
 
-        // Wire up hamburger AFTER header is in the DOM
         var hamburger = document.getElementById('hamburger');
         var navLinks  = document.getElementById('navLinks');
         if(hamburger && navLinks){
@@ -29,11 +24,23 @@
             navLinks.classList.toggle('open');
           });
         }
+
+        // Mobile: tap parent link of has-sub to expand submenu instead of navigating
+        document.querySelectorAll('.has-sub > a').forEach(function(a){
+          a.addEventListener('click', function(e){
+            if(window.innerWidth <= 900){
+              e.preventDefault();
+              this.parentElement.classList.toggle('sub-open');
+            }
+          });
+        });
+
+        // After header loads, check if URL has a #tab= hash and open it
+        openTabFromHash();
       })
       .catch(function(err){ console.warn('Header load failed:', err); });
   }
 
-  // ── Load footer ──
   var footerEl = document.getElementById('site-footer-placeholder');
   if(footerEl){
     fetch('footer.html')
@@ -45,7 +52,87 @@
   }
 })();
 
-// ── FAQ ──
+/* ═══════════════════════════════════════════════════════
+   TAB SYSTEM — for About / Academics / Campus / Contact pages
+   Each page has .tab-link elements (sidebar) and .tab-panel
+   elements (content). Clicking a tab-link shows its panel.
+═══════════════════════════════════════════════════════ */
+function showPageTab(tabId, pushHash){
+  var panels = document.querySelectorAll('.tab-panel');
+  var links  = document.querySelectorAll('.tab-link');
+  if(!panels.length) return false;
+
+  var found = false;
+  panels.forEach(function(p){
+    if(p.getAttribute('data-tab') === tabId){
+      p.classList.add('active');
+      found = true;
+    } else {
+      p.classList.remove('active');
+    }
+  });
+  links.forEach(function(l){
+    l.classList.toggle('active', l.getAttribute('data-tab') === tabId);
+  });
+
+  // If tab not found on this page, default to first tab
+  if(!found && panels.length){
+    panels[0].classList.add('active');
+    if(links.length) links[0].classList.add('active');
+  }
+
+  if(pushHash !== false){
+    history.replaceState(null, '', '#tab=' + tabId);
+  }
+
+  // Scroll to top of content area smoothly (not whole page jump)
+  var area = document.querySelector('.tab-content-area');
+  if(area) area.scrollIntoView({behavior:'smooth', block:'start'});
+
+  return true;
+}
+
+// Wire up sidebar tab-link clicks (delegated, works after dynamic content loads)
+document.addEventListener('click', function(e){
+  var link = e.target.closest('.tab-link');
+  if(!link) return;
+  e.preventDefault();
+  var tabId = link.getAttribute('data-tab');
+  showPageTab(tabId);
+  if(window.innerWidth <= 900){
+    document.getElementById('navLinks') && document.getElementById('navLinks').classList.remove('open');
+  }
+});
+
+// Called by header dropdown links: goToTab(event, 'about.html', 'vision')
+function goToTab(e, page, tabId){
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  if(currentPage === page){
+    e.preventDefault();
+    showPageTab(tabId);
+  }
+  // else: let the link navigate normally; the hash will be picked up on load
+}
+
+// On page load (or after header injects), check location.hash for #tab=xxx
+function openTabFromHash(){
+  var hash = window.location.hash; // e.g. "#tab=vision"
+  if(hash.indexOf('tab=') > -1){
+    var tabId = hash.split('tab=')[1];
+    showPageTab(tabId, false);
+  } else {
+    // default to first tab
+    var firstPanel = document.querySelector('.tab-panel');
+    var firstLink  = document.querySelector('.tab-link');
+    if(firstPanel) firstPanel.classList.add('active');
+    if(firstLink) firstLink.classList.add('active');
+  }
+}
+window.addEventListener('hashchange', function(){ openTabFromHash(); });
+
+/* ═══════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════ */
 document.addEventListener('click', function(e){
   var q = e.target.closest('.faq-q');
   if(!q) return;
@@ -55,7 +142,9 @@ document.addEventListener('click', function(e){
   if(!wasOpen) item.classList.add('open');
 });
 
-// ── STATS (localStorage) ──
+/* ═══════════════════════════════════════════════════════
+   STATS (localStorage)
+═══════════════════════════════════════════════════════ */
 var SS = {visitors:0,enquiries:0,calls:0,whatsapp:0,list:[],daily:[0,0,0,0,0,0,0],pages:{}};
 (function(){
   var s = localStorage.getItem('sss_stats');
@@ -72,7 +161,9 @@ function save(){ localStorage.setItem('sss_stats', JSON.stringify(SS)); }
 function trackCall(){ SS.calls = (SS.calls||0)+1; save(); }
 function trackWA(){   SS.whatsapp = (SS.whatsapp||0)+1; save(); }
 
-// ── ENQUIRY FORM ──
+/* ═══════════════════════════════════════════════════════
+   ENQUIRY FORM
+═══════════════════════════════════════════════════════ */
 function submitEnquiry(){
   var n = document.getElementById('eq-name').value.trim();
   var p = document.getElementById('eq-phone').value.trim();
@@ -89,9 +180,9 @@ function submitEnquiry(){
   alert('Thank you, '+n+'!\n\nYour enquiry has been received. Our admissions team will contact you shortly at '+p+'.');
 }
 
-// ══════════════════════════════════════════════
-// ── IMAGE CAROUSEL ──
-// ══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
+   IMAGE CAROUSEL (homepage hero)
+═══════════════════════════════════════════════════════ */
 (function(){
   var slidesEl = document.getElementById('carouselSlides');
   var dotsEl   = document.getElementById('carouselDots');
@@ -106,13 +197,11 @@ function submitEnquiry(){
   var timer   = null;
   var INTERVAL = 4500;
 
-  // Captions pulled from each img's alt attribute
   var captions = Array.from(slides).map(function(s){
     var img = s.querySelector('img');
     return img ? img.getAttribute('alt') : '';
   });
 
-  // Build dots
   for(var i = 0; i < total; i++){
     var dot = document.createElement('button');
     dot.className = 'carousel-dot' + (i===0 ? ' active' : '');
@@ -142,7 +231,6 @@ function submitEnquiry(){
   if(nextBtn) nextBtn.addEventListener('click', function(){ next(); resetTimer(); });
   if(prevBtn) prevBtn.addEventListener('click', function(){ prev(); resetTimer(); });
 
-  // Touch / swipe
   var touchStartX = 0;
   slidesEl.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
   slidesEl.addEventListener('touchend',   function(e){
@@ -150,7 +238,6 @@ function submitEnquiry(){
     if(Math.abs(dx) > 50){ dx < 0 ? next() : prev(); resetTimer(); }
   }, {passive:true});
 
-  // Pause on hover
   var viewport = document.getElementById('carouselViewport');
   if(viewport){
     viewport.addEventListener('mouseenter', function(){ clearInterval(timer); });
@@ -160,7 +247,9 @@ function submitEnquiry(){
   startTimer();
 })();
 
-// ── ADMIN ──
+/* ═══════════════════════════════════════════════════════
+   ADMIN LOGIN + DASHBOARD
+═══════════════════════════════════════════════════════ */
 function openAdmin(){
   document.getElementById('adminOverlay').classList.add('show');
   setTimeout(function(){ document.getElementById('adminUser').focus(); }, 100);
@@ -186,7 +275,6 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'Enter' && overlay.classList.contains('show')) doLogin();
 });
 
-// ── DASHBOARD ──
 function openDashboard(){
   var dash = document.getElementById('dashboard');
   dash.style.display = 'block';
