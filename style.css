@@ -215,22 +215,18 @@ img {
 .has-sub {
   position: relative;
 }
-
-.has-sub>a {
+.has-sub > a {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .sub-arrow {
   font-size: 9px;
   transition: transform .2s;
 }
-
 .has-sub:hover .sub-arrow {
   transform: rotate(180deg);
 }
-
 .sub-menu {
   display: none;
   position: absolute;
@@ -247,11 +243,9 @@ img {
   list-style: none;
   padding: 6px 0;
 }
-
 .has-sub:hover .sub-menu {
   display: block;
 }
-
 .sub-menu li a {
   display: block;
   padding: 9px 18px;
@@ -261,12 +255,10 @@ img {
   border-bottom: 1px solid #f4eaf8;
   white-space: nowrap;
 }
-
 .sub-menu li a:hover {
   background: var(--pink3);
   color: var(--pink) !important;
 }
-
 .sub-divider {
   padding: 8px 18px 4px;
   font-size: 10px;
@@ -1917,7 +1909,6 @@ footer h4 {
   max-width: 1400px;
   margin: 0 auto;
 }
-
 .tab-sidebar {
   background: var(--bg);
   border-right: 1px solid var(--border);
@@ -1928,11 +1919,9 @@ footer h4 {
   max-height: calc(100vh - 130px);
   overflow-y: auto;
 }
-
 .tab-sidebar-group {
   margin-bottom: 18px;
 }
-
 .tab-sidebar-group-title {
   font-size: 11px;
   font-weight: 700;
@@ -1942,7 +1931,6 @@ footer h4 {
   padding: 0 20px;
   margin-bottom: 8px;
 }
-
 .tab-link {
   display: block;
   padding: 10px 20px;
@@ -1952,45 +1940,31 @@ footer h4 {
   cursor: pointer;
   transition: background .15s, border-color .15s, color .15s;
 }
-
 .tab-link:hover {
   background: var(--pink3);
   color: var(--pink);
 }
-
 .tab-link.active {
   background: var(--pink3);
   border-left-color: var(--pink2);
   color: var(--pink);
   font-weight: 700;
 }
-
 .tab-content-area {
   padding: 32px 4%;
   min-width: 0;
 }
-
 .tab-panel {
   display: none;
   animation: fadeIn .25s ease;
 }
-
 .tab-panel.active {
   display: block;
 }
-
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .tab-panel h2.s-title {
   margin-top: 0;
 }
@@ -2000,7 +1974,6 @@ footer h4 {
   .tab-page-wrap {
     grid-template-columns: 1fr;
   }
-
   .tab-sidebar {
     position: static;
     max-height: none;
@@ -2012,17 +1985,14 @@ footer h4 {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
-
   .tab-sidebar-group {
     display: flex;
     gap: 8px;
     margin-bottom: 0;
   }
-
   .tab-sidebar-group-title {
     display: none;
   }
-
   .tab-link {
     border-left: none;
     border-radius: 20px;
@@ -2031,7 +2001,6 @@ footer h4 {
     padding: 8px 16px;
     flex-shrink: 0;
   }
-
   .tab-link.active {
     border-left: none;
     background: var(--pink2);
@@ -2093,18 +2062,16 @@ footer h4 {
     box-shadow: none;
     border-radius: 0;
     border-top: none;
-    background: rgba(0, 0, 0, .15);
+    background: rgba(0,0,0,.15);
     display: none;
   }
-
   .has-sub.sub-open .sub-menu {
     display: block;
   }
-
   .sub-menu li a {
     color: #eee !important;
     padding-left: 36px;
-    border-bottom-color: rgba(255, 255, 255, .08);
+    border-bottom-color: rgba(255,255,255,.08);
   }
 
   .hamburger {
@@ -2169,65 +2136,51 @@ footer h4 {
   .nav-links {
     top: 60px;
   }
-
   .hero-btns {
     flex-direction: column;
     gap: 8px;
     align-items: center;
   }
-
   .hero-btns .btn-primary,
   .hero-btns .btn-outline-pink,
   .hero-btns .btn-wa {
     width: 100%;
     justify-content: center;
   }
-
   .steps {
     grid-template-columns: 1fr;
   }
-
   .rank-grid {
     grid-template-columns: 1fr;
   }
-
   .card-grid {
     grid-template-columns: 1fr;
   }
-
   .metrics {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-
   .f-grid {
     grid-template-columns: 1fr;
   }
-
   .chairman-wrap {
     grid-template-columns: 1fr;
   }
-
   .person-grid {
     grid-template-columns: 1fr 1fr;
   }
-
   .route-grid {
     grid-template-columns: 1fr 1fr;
   }
-
   .gallery-strip {
     grid-template-columns: 1fr 1fr;
   }
-
   .vm-grid {
     grid-template-columns: 1fr;
   }
-
   .contact-btns {
     flex-direction: column;
   }
-
   .btn-primary,
   .btn-wa {
     width: 100%;
