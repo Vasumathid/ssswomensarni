@@ -1958,6 +1958,10 @@ footer h4 {
   display: none;
   animation: fadeIn .25s ease;
 }
+.tab-panel  p {
+   text-align: justify;
+ }
+
 .tab-panel.active {
   display: block;
 }
