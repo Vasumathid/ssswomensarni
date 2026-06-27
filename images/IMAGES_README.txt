@@ -8,7 +8,7 @@ IMAGES NEEDED (suggested filenames):
 --------------------------------------
 college-building.jpg     → Main college building exterior
 college-entrance.jpg     → College entrance / gate
-principal.jpg            → Dr. S. Lakshmi (Principal)
+principal.jpg            → Dr. V. VijayaLakshmi (Principal)
 chairman.jpg             → Mr. A.K. Natarajan (Chairman)
 secretary.jpg            → Mr. A.N. Sankar (Secretary)
 computer-lab-1.jpg       → Computer lab wide view
