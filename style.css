@@ -267,21 +267,22 @@ img {
 }
 
 /* Academics dropdown: two-column layout (lots of items) */
-.has-sub:nth-child(3) .sub-menu {
+/* Wide dropdown: two-column layout for menus with many items */
+.sub-menu-wide {
   display: none;
   columns: 2;
   column-gap: 0;
-  min-width: 400px;
+  min-width: 420px;
+  max-width: 520px;
 }
 
-.has-sub:nth-child(3):hover>.sub-menu {
+.has-sub:hover>.sub-menu-wide {
   display: block;
 }
 
-.has-sub:nth-child(3) .sub-menu li {
+.sub-menu-wide li {
   break-inside: avoid;
 }
-
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -2185,11 +2186,12 @@ footer h4 {
   }
 
   /* Academics: reset 2-col on mobile */
-  .has-sub:nth-child(3) .sub-menu {
-    columns: 1;
-    min-width: 0;
-  }
-
+    /* Wide dropdowns: reset to single column on mobile */
+    .sub-menu-wide {
+      columns: 1;
+      min-width: 0;
+      max-width: none;
+    }
   /* Arrow points right when closed on mobile */
   .has-sub .sub-arrow {
     margin-left: auto;
