@@ -39,11 +39,12 @@
     </div>
   </div>
 
-  <!-- ROW 2: Menu bar (sticky) -->
+  <!-- ROW 2: Nav menu bar (sticky) -->
   <nav class="header-nav">
     <div class="header-nav-inner">
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" data-page="index.html">&#127968; Home</a></li>
+
         <li class="has-sub">
           <a href="about.html" data-page="about.html"
             >&#8505; About Us <span class="sub-arrow">&#9662;</span></a
@@ -93,6 +94,7 @@
             </li>
           </ul>
         </li>
+
         <li class="has-sub">
           <a href="academics.html" data-page="academics.html"
             >&#127891; Academics <span class="sub-arrow">&#9662;</span></a
@@ -112,7 +114,6 @@
                 >Admissions</a
               >
             </li>
-
             <li>
               <a
                 href="academics.html#tab=results"
@@ -200,6 +201,7 @@
             </li>
           </ul>
         </li>
+
         <li class="has-sub">
           <a href="campus.html" data-page="campus.html"
             >&#127979; Campus Life <span class="sub-arrow">&#9662;</span></a
@@ -328,11 +330,11 @@
             </li>
           </ul>
         </li>
-        <li class="has-sub">
-          <a href="IQAC.html" data-page="IQAC.html"
-            >&#128205; IQAC <span class="sub-arrow">&#9662;</span></a
-          >
+
+        <li>
+          <a href="IQAC.html" data-page="IQAC.html">&#128203; IQAC</a>
         </li>
+
         <li class="has-sub">
           <a href="contact.html" data-page="contact.html"
             >&#128205; Contact <span class="sub-arrow">&#9662;</span></a
@@ -345,14 +347,6 @@
                 >Contact Info &amp; Map</a
               >
             </li>
-
-            <!-- <li>
-              <a
-                href="contact.html#tab=naac"
-                onclick="goToTab(event, 'contact.html', 'naac')"
-                >NAAC</a
-              >
-            </li> -->
           </ul>
         </li>
 
@@ -362,7 +356,14 @@
           >
         </li>
       </ul>
-      <div class="hamburger" id="hamburger">
+      <!-- Hamburger -->
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        role="button"
+        tabindex="0"
+      >
         <span></span><span></span><span></span>
       </div>
     </div>
