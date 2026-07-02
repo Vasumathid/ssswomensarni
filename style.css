@@ -283,6 +283,7 @@ img {
 .sub-menu-wide li {
   break-inside: avoid;
 }
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -685,6 +686,7 @@ img {
   gap: 44px;
   align-items: start;
 }
+
 .two-col+.two-col {
   margin-top: 32px;
 }
@@ -694,6 +696,7 @@ img {
     margin-top: 24px;
   }
 }
+
 .three-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -2186,12 +2189,13 @@ footer h4 {
   }
 
   /* Academics: reset 2-col on mobile */
-    /* Wide dropdowns: reset to single column on mobile */
-    .sub-menu-wide {
-      columns: 1;
-      min-width: 0;
-      max-width: none;
-    }
+  /* Wide dropdowns: reset to single column on mobile */
+  .sub-menu-wide {
+    columns: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
   /* Arrow points right when closed on mobile */
   .has-sub .sub-arrow {
     margin-left: auto;
@@ -2433,5 +2437,111 @@ footer h4 {
 
   .route-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   GLOBAL FLOATING ENQUIRY BUTTONS
+   (WhatsApp + Call — present on every page)
+═══════════════════════════════════════════ */
+.float-cta-stack {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.float-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px 13px 15px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .22);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.float-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
+}
+
+.float-btn-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.float-btn-wa {
+  background: #25d366;
+}
+
+.float-btn-wa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: #25d366;
+  opacity: .55;
+  animation: floatPulse 2.2s ease-out infinite;
+  z-index: -1;
+}
+
+.float-btn-call {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+}
+
+@keyframes floatPulse {
+  0% {
+    opacity: .45;
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-btn-wa::before {
+    animation: none;
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .float-cta-stack {
+    right: 14px;
+    bottom: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    gap: 10px;
+  }
+
+  .float-btn {
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .float-btn-label {
+    display: none;
   }
 }
