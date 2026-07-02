@@ -684,7 +684,15 @@ img {
   gap: 44px;
   align-items: start;
 }
+.two-col+.two-col {
+  margin-top: 32px;
+}
 
+@media(max-width:600px) {
+  .two-col+.two-col {
+    margin-top: 24px;
+  }
+}
 .three-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
