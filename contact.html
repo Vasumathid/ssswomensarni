@@ -107,13 +107,30 @@
                 >
               </div>
             </div>
-            <div class="enquiry-box">
+            <form
+              class="enquiry-box"
+              id="enquiryForm"
+              action="https://formsubmit.co/ajax/arnissscollege@gmail.com"
+              method="POST"
+              onsubmit="return submitEnquiry(event, this)"
+            >
+              <input type="hidden" name="_subject" value="New Admission Enquiry — SSS College Website" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <p style="position: absolute; left: -9999px">
+                <label
+                  >Don't fill this out if you're human:
+                  <input name="_honey" tabindex="-1" autocomplete="off"
+                /></label>
+              </p>
               <h3>&#128231; Send an Enquiry</h3>
               <div class="form-group">
                 <label>Full Name</label
                 ><input
                   type="text"
                   id="eq-name"
+                  name="name"
+                  required
                   placeholder="Enter your full name"
                 />
               </div>
@@ -122,12 +139,14 @@
                 ><input
                   type="tel"
                   id="eq-phone"
+                  name="phone"
+                  required
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
               <div class="form-group">
                 <label>Course Interested In</label>
-                <select id="eq-course">
+                <select id="eq-course" name="course">
                   <option value="">Select a course</option>
                   <option>B.Sc. Computer Science</option>
                   <option>B.Sc. Artificial Intelligence</option>
@@ -144,13 +163,14 @@
                 <label>Message (Optional)</label
                 ><textarea
                   id="eq-msg"
+                  name="message"
                   placeholder="Any questions about admissions, fees, hostel..."
                 ></textarea>
               </div>
-              <button class="btn-submit" onclick="submitEnquiry()">
+              <button class="btn-submit" type="submit">
                 &#10003; Submit Enquiry
               </button>
-            </div>
+            </form>
           </div>
           <div class="map-wrap">
             <iframe

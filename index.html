@@ -191,8 +191,11 @@
           <p>
             SSS College for Women was established in 2022-23 at Aagaram Village,
             Arni Taluk, under the AKN Educational Trust founded by Chairman
-            Thiru A.K. Natarajan — who also runs the well-established SSS
-            College of Arts, Science and Management, Arcot (since 2005).
+            Thiru A.K. Natarajan —
+            <strong
+              >who also runs the well-established SSS College of Arts,
+              Science and Management, Arcot (since 2005)</strong
+            >.
           </p>
           <p>
             The college is dedicated exclusively to women, providing a safe,
@@ -216,6 +219,37 @@
         </div>
         <div class="about-purple">
           <h3>Why Choose SSS College for Women?</h3>
+          <div class="about-item">
+            <div class="about-icon">&#129302;</div>
+            <div>
+              <strong>Future-Ready Courses — B.Sc. Artificial Intelligence</strong>
+              <p>
+                One of the few women's colleges in the region offering AI as a
+                dedicated UG programme, alongside Computer Science and BCA.
+              </p>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">&#127942;</div>
+            <div>
+              <strong>Proven Results — From Our Very First Batch</strong>
+              <p>
+                3 Thiruvalluvar University rank holders and 49 students with
+                First Class Distinction, all from our first graduating batch
+                (2022–2025).
+              </p>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">&#127381;</div>
+            <div>
+              <strong>Scholarships Renewed Every Semester</strong>
+              <p>
+                15% fee concession for HSC 1000+ and 10% for HSC 900+ —
+                applied every semester, not just in your first year.
+              </p>
+            </div>
+          </div>
           <div class="about-item">
             <div class="about-icon">&#127979;</div>
             <div>
@@ -611,6 +645,56 @@
             border-radius: 10px;
           "
         />
+        <img
+          src="images/womensday.jpg"
+          alt="Women's Day Celebration at SSS College"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+          "
+        />
+        <img
+          src="images/onam.jpg"
+          alt="Onam Celebration at SSS College"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+          "
+        />
+        <img
+          src="images/kolam.jpg"
+          alt="Kolam Competition at SSS College"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+          "
+        />
+        <img
+          src="images/stage.jpg"
+          alt="Cultural Stage Programme at SSS College"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+          "
+        />
+        <img
+          src="images/college-building1.jpg"
+          alt="Campus View SSS College for Women Arni"
+          style="
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+          "
+        />
       </div>
     </section>
 
@@ -681,23 +765,46 @@
             >
           </div>
         </div>
-        <div class="enquiry-box">
+        <form
+          class="enquiry-box"
+          id="enquiryForm"
+          action="https://formsubmit.co/ajax/arnissscollege@gmail.com"
+          method="POST"
+          onsubmit="return submitEnquiry(event, this)"
+        >
+          <input type="hidden" name="_subject" value="New Admission Enquiry — SSS College Website" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <p style="position: absolute; left: -9999px">
+            <label
+              >Don't fill this out if you're human:
+              <input name="_honey" tabindex="-1" autocomplete="off"
+            /></label>
+          </p>
           <h3>&#128231; Send an Enquiry</h3>
           <div class="form-group">
             <label>Full Name</label
             ><input
               type="text"
               id="eq-name"
+              name="name"
+              required
               placeholder="Enter your full name"
             />
           </div>
           <div class="form-group">
             <label>Mobile Number</label
-            ><input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" />
+            ><input
+              type="tel"
+              id="eq-phone"
+              name="phone"
+              required
+              placeholder="+91 XXXXX XXXXX"
+            />
           </div>
           <div class="form-group">
             <label>Course Interested In</label>
-            <select id="eq-course">
+            <select id="eq-course" name="course">
               <option value="">Select a course</option>
               <option>B.Sc. Computer Science</option>
               <option>B.Sc. Artificial Intelligence</option>
@@ -714,13 +821,14 @@
             <label>Message (Optional)</label
             ><textarea
               id="eq-msg"
+              name="message"
               placeholder="Any questions about admissions, fees, hostel..."
             ></textarea>
           </div>
-          <button class="btn-submit" onclick="submitEnquiry()">
+          <button class="btn-submit" type="submit">
             &#10003; Submit Enquiry
           </button>
-        </div>
+        </form>
       </div>
     </section>
 

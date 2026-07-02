@@ -283,7 +283,6 @@ img {
 .sub-menu-wide li {
   break-inside: avoid;
 }
-
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -686,7 +685,6 @@ img {
   gap: 44px;
   align-items: start;
 }
-
 .two-col+.two-col {
   margin-top: 32px;
 }
@@ -696,7 +694,6 @@ img {
     margin-top: 24px;
   }
 }
-
 .three-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -2189,13 +2186,12 @@ footer h4 {
   }
 
   /* Academics: reset 2-col on mobile */
-  /* Wide dropdowns: reset to single column on mobile */
-  .sub-menu-wide {
-    columns: 1;
-    min-width: 0;
-    max-width: none;
-  }
-
+    /* Wide dropdowns: reset to single column on mobile */
+    .sub-menu-wide {
+      columns: 1;
+      min-width: 0;
+      max-width: none;
+    }
   /* Arrow points right when closed on mobile */
   .has-sub .sub-arrow {
     margin-left: auto;
