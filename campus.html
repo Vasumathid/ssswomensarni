@@ -726,10 +726,118 @@
           <div class="s-label">Gallery</div>
           <h2 class="s-title">Media Coverage</h2>
           <p style="color: var(--muted)">
-            News articles and media features about SSS College for Women will be
-            listed here as they are published.
+            News articles, brochures and press features about SSS College for
+            Women.
           </p>
+
+          <div class="card-grid" id="pdf-gallery" style="margin-top: 18px">
+            <!-- Cards are generated automatically by the script below -->
+          </div>
         </div>
+
+        <!-- PDF.js library (only needs to be included once per page) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+        <script>
+          pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+          // List all 9 PDFs here — just edit this array
+          const pdfList = [
+            {
+              file: "pdfs/symposium.pdf",
+              title: "Symposium 2026",
+              desc: "Inter-collegiate symposium event highlights and programme details.",
+            },
+            {
+              file: "pdfs/graduation_day.pdf",
+              title: "Graduation Day",
+              desc: "Convocation ceremony celebrating the 2022–2025 batch graduates.",
+            },
+            {
+              file: "pdfs/annual_day.pdf",
+              title: "Annual Day 2024–25",
+              desc: "Cultural performances, prize distribution and annual day celebrations.",
+            },
+            {
+              file: "pdfs/college_inauguration.pdf",
+              title: "College Inauguration",
+              desc: "Inauguration ceremony of SSS College for Women, Arni – 2022.",
+            },
+            {
+              file: "pdfs/graduation_day.pdf",
+              title: "Graduation Day — Press Coverage",
+              desc: "Media coverage and highlights from the graduation day function.",
+            },
+            {
+              file: "pdfs/laptop distribution.pdf",
+              title: "Laptop Distribution",
+              desc: "Government laptop distribution programme for eligible students.",
+            },
+            {
+              file: "pdfs/mupperum_vizha.pdf",
+              title: "Mupperum Vizha",
+              desc: "Triple celebration event — cultural fest, sports day and college day.",
+            },
+            {
+              file: "pdfs/voting_awareness.pdf",
+              title: "Voting Awareness Programme",
+              desc: "Electoral literacy and voter awareness drive conducted by the college.",
+            },
+            {
+              file: "pdfs/yoga_day.pdf",
+              title: "International Yoga Day",
+              desc: "Yoga Day celebrations and wellness activities organised on campus.",
+            },
+          ];
+          const gallery = document.getElementById("pdf-gallery");
+
+          pdfList.forEach((item, index) => {
+            // Build the card
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+      <canvas id="pdf-thumb-${index}" style="width:100%; border-radius:10px; background:#f2f2f2; display:block;"></canvas>
+      <div class="card-body">
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        <div style="display:flex; gap:10px; margin-top:10px">
+          <a href="${item.file}" target="_blank" rel="noopener"
+            style="font-size:13px; padding:6px 14px; border-radius:8px; background:var(--purple); color:#fff; text-decoration:none;">View</a>
+          <a href="${item.file}" download
+            style="font-size:13px; padding:6px 14px; border-radius:8px; border:1px solid var(--purple); color:var(--purple); text-decoration:none;">Download</a>
+        </div>
+      </div>
+    `;
+            gallery.appendChild(card);
+
+            // Render first page thumbnail
+            pdfjsLib
+              .getDocument(item.file)
+              .promise.then((pdf) => {
+                pdf.getPage(1).then((page) => {
+                  const canvas = document.getElementById(`pdf-thumb-${index}`);
+                  const context = canvas.getContext("2d");
+                  const viewport = page.getViewport({ scale: 1 });
+                  const scale = 280 / viewport.width; // fit card width
+                  const scaledViewport = page.getViewport({ scale });
+                  canvas.height = scaledViewport.height;
+                  canvas.width = scaledViewport.width;
+                  page.render({
+                    canvasContext: context,
+                    viewport: scaledViewport,
+                  });
+                });
+              })
+              .catch(() => {
+                // If a PDF fails to load, show a fallback icon instead
+                const canvas = document.getElementById(`pdf-thumb-${index}`);
+                canvas.parentElement
+                  .querySelector("h3")
+                  .insertAdjacentHTML("beforebegin", "📄<br>");
+              });
+          });
+        </script>
       </div>
     </div>
 
