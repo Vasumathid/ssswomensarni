@@ -283,6 +283,7 @@ img {
 .sub-menu-wide li {
   break-inside: avoid;
 }
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -685,6 +686,7 @@ img {
   gap: 44px;
   align-items: start;
 }
+
 .two-col+.two-col {
   margin-top: 32px;
 }
@@ -694,6 +696,7 @@ img {
     margin-top: 24px;
   }
 }
+
 .three-col {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -2186,12 +2189,13 @@ footer h4 {
   }
 
   /* Academics: reset 2-col on mobile */
-    /* Wide dropdowns: reset to single column on mobile */
-    .sub-menu-wide {
-      columns: 1;
-      min-width: 0;
-      max-width: none;
-    }
+  /* Wide dropdowns: reset to single column on mobile */
+  .sub-menu-wide {
+    columns: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
   /* Arrow points right when closed on mobile */
   .has-sub .sub-arrow {
     margin-left: auto;
@@ -2539,5 +2543,243 @@ footer h4 {
 
   .float-btn-label {
     display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   ATTRACT & ENGAGE — scroll reveals + micro-interactions
+   (Colours untouched — every rule below reuses the
+   existing --pink / --purple / --gold variables)
+═══════════════════════════════════════════ */
+
+/* Scroll-reveal: elements fade & rise into place as the visitor scrolls */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card / tile hover-lift across the site */
+.card,
+.facility-card,
+.rank-card,
+.about-item,
+.gallery-strip img {
+  transition: transform .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s ease;
+}
+
+.card:hover,
+.facility-card:hover,
+.rank-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(106, 27, 154, .18);
+}
+
+.about-item:hover {
+  transform: translateX(4px);
+}
+
+.gallery-strip img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px rgba(106, 27, 154, .25);
+}
+
+.card:hover .card-icon {
+  animation: iconPop .5s ease;
+}
+
+@keyframes iconPop {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  40% {
+    transform: scale(1.25) rotate(-6deg);
+  }
+
+  70% {
+    transform: scale(.95) rotate(3deg);
+  }
+}
+
+/* Button shine sweep on primary CTAs */
+.btn-primary,
+.btn-outline-pink,
+.btn-wa,
+.header-apply-btn,
+.nav-apply-btn,
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-primary::before,
+.header-apply-btn::before,
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .55), transparent);
+  transform: skewX(-20deg);
+  transition: left .6s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::before,
+.header-apply-btn:hover::before,
+.btn-submit:hover::before {
+  left: 130%;
+}
+
+.btn-primary:hover,
+.btn-outline-pink:hover,
+.btn-wa:hover,
+.header-apply-btn:hover,
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(194, 24, 91, .32);
+}
+
+/* Gentle breathing glow on "Apply Now" buttons to draw the eye */
+.header-apply-btn,
+.nav-apply-btn {
+  animation: applyGlow 2.6s ease-in-out infinite;
+}
+
+@keyframes applyGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(233, 30, 140, .45);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(233, 30, 140, 0);
+  }
+}
+
+/* Achievement numbers pop in once counted */
+.a-num {
+  display: inline-block;
+}
+
+.ach-item.counted .a-num {
+  animation: numPop .5s ease;
+}
+
+@keyframes numPop {
+  0% {
+    transform: scale(.6);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hero college-name shimmer */
+.header-sss {
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .header-apply-btn,
+  .nav-apply-btn,
+  .header-sss,
+  .admission-ribbon {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   ADMISSIONS RIBBON — floating "Apply Now" nudge
+   injected site-wide by main.js (bottom-left)
+═══════════════════════════════════════════ */
+.admission-ribbon {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--purple), var(--pink2));
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 26px rgba(106, 27, 154, .35);
+  cursor: pointer;
+  text-decoration: none;
+  animation: ribbonFloat 3.2s ease-in-out infinite;
+}
+
+.admission-ribbon:hover {
+  box-shadow: 0 12px 32px rgba(106, 27, 154, .5);
+}
+
+.admission-ribbon .r-close {
+  background: rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+@keyframes ribbonFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 600px) {
+  .admission-ribbon {
+    left: 14px;
+    bottom: 14px;
+    padding: 10px 14px;
+    font-size: 11.5px;
+  }
+
+  .admission-ribbon .r-label {
+    max-width: 120px;
   }
 }

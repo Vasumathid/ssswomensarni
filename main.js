@@ -164,44 +164,20 @@ function trackWA(){   SS.whatsapp = (SS.whatsapp||0)+1; save(); }
 /* ═══════════════════════════════════════════════════════
    ENQUIRY FORM
 ═══════════════════════════════════════════════════════ */
-function submitEnquiry(evt, formEl){
-  if(evt) evt.preventDefault();
-  var form = formEl || document.getElementById('enquiryForm');
+function submitEnquiry(){
   var n = document.getElementById('eq-name').value.trim();
   var p = document.getElementById('eq-phone').value.trim();
   var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
   var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
-  if(!n || !p){ alert('Please enter your name and phone number.'); return false; }
-
-  var btn = form.querySelector('.btn-submit');
-  var originalBtnText = btn ? btn.innerHTML : '';
-  if(btn){ btn.disabled = true; btn.innerHTML = 'Sending...'; }
-
-  fetch(form.action, {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: new FormData(form)
-  })
-  .then(function(res){
-    if(!res.ok) throw new Error('Request failed');
-    return res.json().catch(function(){ return {}; });
-  })
-  .then(function(){
-    SS.list = SS.list || [];
-    SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
-    SS.enquiries = (SS.enquiries||0) + 1;
-    save();
-    form.reset();
-    alert('Thank you, '+n+'!\n\nYour enquiry has been sent to our admissions team. We will contact you shortly at '+p+'.');
-  })
-  .catch(function(){
-    alert('Sorry, something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — your enquiry is important to us.');
-  })
-  .finally(function(){
-    if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
+  if(!n || !p){ alert('Please enter your name and phone number.'); return; }
+  SS.list = SS.list || [];
+  SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
+  SS.enquiries = (SS.enquiries||0) + 1;
+  save();
+  ['eq-name','eq-phone','eq-course','eq-msg'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.value = '';
   });
-
-  return false;
+  alert('Thank you, '+n+'!\n\nYour enquiry has been received. Our admissions team will contact you shortly at '+p+'.');
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -270,6 +246,97 @@ function submitEnquiry(evt, formEl){
 
   startTimer();
 })();
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEALS — fade/rise elements into view as the
+   visitor scrolls, applied site-wide without touching
+   every page's markup
+═══════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function () {
+  var revealSelectors = [
+    '.section > .s-label', '.section > .s-title', '.section > .s-sub',
+    '.two-col > div', '.card', '.facility-card', '.rank-card',
+    '.about-item', '.enquiry-box', '.gallery-strip img',
+    '.tab-panel h2', '.steps > *', '.metric', '.person-card',
+    '.faq-item'
+  ];
+  var els = document.querySelectorAll(revealSelectors.join(','));
+  els.forEach(function (el, i) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 0.08) + 's';
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  /* Achievement strip — animate numbers counting up when visible */
+  var achItems = document.querySelectorAll('.ach-item');
+  if (achItems.length && 'IntersectionObserver' in window) {
+    var counted = false;
+    var achIO = new IntersectionObserver(function (entries) {
+      if (counted) return;
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) counted = true;
+      });
+      if (!counted) return;
+      achItems.forEach(function (item) {
+        var numEl = item.querySelector('.a-num');
+        if (!numEl) return;
+        var raw = numEl.textContent.trim();
+        var suffix = raw.replace(/[0-9]/g, '');
+        var target = parseInt(raw, 10);
+        if (isNaN(target)) return;
+        var start = 0;
+        var duration = 900;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          numEl.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            item.classList.add('counted');
+          }
+        }
+        requestAnimationFrame(step);
+      });
+      achIO.disconnect();
+    }, { threshold: 0.4 });
+    achIO.observe(achItems[0]);
+  }
+
+  /* Floating "Apply Now" admissions ribbon — every page, dismissible per session */
+  if (!sessionStorage.getItem('sss_ribbon_dismissed')) {
+    var ribbon = document.createElement('a');
+    ribbon.href = 'contact.html#tab=info';
+    ribbon.className = 'admission-ribbon';
+    ribbon.setAttribute('aria-label', 'Apply for admission 2026-27');
+    ribbon.innerHTML =
+      '<span>&#127891;</span>' +
+      '<span class="r-label">Admissions Open 2026&ndash;27 &mdash; Apply Now</span>' +
+      '<span class="r-close" aria-label="Dismiss">&#10005;</span>';
+    ribbon.querySelector('.r-close').addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      ribbon.remove();
+      sessionStorage.setItem('sss_ribbon_dismissed', '1');
+    });
+    document.body.appendChild(ribbon);
+  }
+});
 
 /* ═══════════════════════════════════════════════════════
    ADMIN LOGIN + DASHBOARD
