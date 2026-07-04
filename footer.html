@@ -264,3 +264,31 @@
     <span class="float-btn-label">Call Now</span>
   </a>
 </div>
+
+<!-- ENQUIRY SUCCESS WELCOME MODAL — present on every page -->
+<div id="enquirySuccessModal" class="welcome-modal-overlay" onclick="if(event.target===this) closeEnquiryModal()">
+  <div class="welcome-modal">
+    <button class="welcome-modal-close" onclick="closeEnquiryModal()" aria-label="Close">&#10005;</button>
+    <div class="welcome-modal-badge">&#127881;</div>
+    <h2 class="welcome-modal-title">Welcome to the SSS College Family!</h2>
+    <p class="welcome-modal-text">
+      Thank you, <strong id="wm-name">Student</strong>! Your enquiry has
+      reached our admissions team. We'll call you soon at
+      <strong id="wm-phone">your number</strong> — you could be one of us
+      very soon! &#127793;
+    </p>
+    <div class="welcome-modal-actions">
+      <a
+        href="https://wa.me/919894218555?text=Hello%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website"
+        class="btn-white welcome-modal-wa"
+        target="_blank"
+        rel="noopener"
+        onclick="trackWA()"
+        >&#128172; Chat with us on WhatsApp</a
+      >
+      <button class="welcome-modal-continue" onclick="closeEnquiryModal()">
+        Continue Browsing
+      </button>
+    </div>
+  </div>
+</div>

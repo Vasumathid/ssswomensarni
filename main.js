@@ -164,21 +164,68 @@ function trackWA(){   SS.whatsapp = (SS.whatsapp||0)+1; save(); }
 /* ═══════════════════════════════════════════════════════
    ENQUIRY FORM
 ═══════════════════════════════════════════════════════ */
-function submitEnquiry(){
+function submitEnquiry(evt, formEl){
+  if(evt){ evt.preventDefault(); evt.stopPropagation(); }
+  var form = formEl || document.getElementById('enquiryForm');
   var n = document.getElementById('eq-name').value.trim();
   var p = document.getElementById('eq-phone').value.trim();
   var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
   var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
-  if(!n || !p){ alert('Please enter your name and phone number.'); return; }
-  SS.list = SS.list || [];
-  SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
-  SS.enquiries = (SS.enquiries||0) + 1;
-  save();
-  ['eq-name','eq-phone','eq-course','eq-msg'].forEach(function(id){
-    var el = document.getElementById(id); if(el) el.value = '';
+  if(!n || !p){ alert('Please enter your name and phone number.'); return false; }
+
+  var btn = form.querySelector('.btn-submit');
+  var originalBtnText = btn ? btn.innerHTML : '';
+  if(btn){ btn.disabled = true; btn.innerHTML = 'Sending...'; }
+
+  fetch(form.action, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(function(res){
+    if(!res.ok) throw new Error('Request failed');
+    return res.json().catch(function(){ return {}; });
+  })
+  .then(function(){
+    SS.list = SS.list || [];
+    SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
+    SS.enquiries = (SS.enquiries||0) + 1;
+    save();
+    form.reset();
+    showEnquiryModal(n, p);
+  })
+  .catch(function(){
+    alert('Sorry, something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — your enquiry is important to us.');
+  })
+  .finally(function(){
+    if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
   });
-  alert('Thank you, '+n+'!\n\nYour enquiry has been received. Our admissions team will contact you shortly at '+p+'.');
+
+  return false;
 }
+
+function showEnquiryModal(name, phone){
+  var modal = document.getElementById('enquirySuccessModal');
+  if(!modal) return; // footer not yet loaded — fail silently, form still submitted
+  var nameEl = document.getElementById('wm-name');
+  var phoneEl = document.getElementById('wm-phone');
+  if(nameEl) nameEl.textContent = name || 'Student';
+  if(phoneEl) phoneEl.textContent = phone || 'your number';
+  modal.classList.add('show');
+}
+
+function closeEnquiryModal(){
+  var modal = document.getElementById('enquirySuccessModal');
+  if(modal) modal.classList.remove('show');
+}
+
+// Defensive backup: guarantee native form submission never fires,
+// even if the inline onsubmit attribute is ever stripped or fails silently.
+document.addEventListener('submit', function(e){
+  if(e.target && e.target.id === 'enquiryForm'){
+    e.preventDefault();
+  }
+}, true);
 
 /* ═══════════════════════════════════════════════════════
    IMAGE CAROUSEL (homepage hero)

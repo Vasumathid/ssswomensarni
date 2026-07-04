@@ -2548,6 +2548,159 @@ footer h4 {
 }
 
 /* ═══════════════════════════════════════════
+   ENQUIRY SUCCESS WELCOME MODAL
+═══════════════════════════════════════════ */
+.welcome-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 10, 40, .6);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.welcome-modal-overlay.show {
+  display: flex;
+  animation: wmFadeIn .25s ease;
+}
+
+.welcome-modal {
+  background: #fff;
+  border-radius: 22px;
+  max-width: 440px;
+  width: 100%;
+  padding: 40px 32px 32px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+  animation: wmPopIn .35s cubic-bezier(.34, 1.56, .64, 1);
+  border-top: 6px solid transparent;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(90deg, var(--purple), var(--pink), var(--gold));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.welcome-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+}
+
+.welcome-modal-badge {
+  font-size: 52px;
+  margin-bottom: 6px;
+  animation: wmBounce 1s ease .3s;
+}
+
+.welcome-modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 14px;
+}
+
+.welcome-modal-text {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.welcome-modal-text strong {
+  color: var(--text);
+}
+
+.welcome-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.welcome-modal-wa {
+  background: #25d366;
+  color: #fff;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 13px 20px;
+}
+
+.welcome-modal-continue {
+  background: none;
+  border: none;
+  color: var(--purple);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@keyframes wmFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wmPopIn {
+  from {
+    opacity: 0;
+    transform: scale(.85) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes wmBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  70% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .welcome-modal,
+  .welcome-modal-overlay.show,
+  .welcome-modal-badge {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════
    ATTRACT & ENGAGE — scroll reveals + micro-interactions
    (Colours untouched — every rule below reuses the
    existing --pink / --purple / --gold variables)
