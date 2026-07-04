@@ -839,6 +839,7 @@ img {
   font-size: 12px;
   opacity: .85;
   margin-top: 3px;
+  text-align: center !important;
 }
 
 .rank-card .rank-badge {
