@@ -164,49 +164,77 @@ function trackWA(){   SS.whatsapp = (SS.whatsapp||0)+1; save(); }
 /* ═══════════════════════════════════════════════════════
    ENQUIRY FORM
 ═══════════════════════════════════════════════════════ */
+function setEnquiryStatus(form, text, isError){
+  var msg = form.querySelector('#enquiryStatusMsg');
+  if(!msg) return;
+  msg.textContent = text;
+  msg.style.display = 'block';
+  msg.style.marginTop = '12px';
+  msg.style.padding = '10px 14px';
+  msg.style.borderRadius = '8px';
+  msg.style.fontSize = '13.5px';
+  msg.style.fontWeight = '600';
+  if(isError){
+    msg.style.background = '#fdecea';
+    msg.style.color = '#c62828';
+  } else {
+    msg.style.background = '#e8f8ee';
+    msg.style.color = '#1b7a3d';
+  }
+}
+
 function submitEnquiry(evt, formEl){
-  if(evt){ evt.preventDefault(); evt.stopPropagation(); }
-  var form = formEl || document.getElementById('enquiryForm');
-  var n = document.getElementById('eq-name').value.trim();
-  var p = document.getElementById('eq-phone').value.trim();
-  var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
-  var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
-  if(!n || !p){ alert('Please enter your name and phone number.'); return false; }
+  try{
+    if(evt){ evt.preventDefault(); evt.stopPropagation(); }
+    var form = formEl || (evt && evt.target) || document.getElementById('enquiryForm');
+    var nameField = document.getElementById('eq-name');
+    var phoneField = document.getElementById('eq-phone');
+    var n = nameField ? nameField.value.trim() : '';
+    var p = phoneField ? phoneField.value.trim() : '';
+    var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
+    var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
+    if(!n || !p){ setEnquiryStatus(form, 'Please enter your name and phone number.', true); return false; }
 
-  var btn = form.querySelector('.btn-submit');
-  var originalBtnText = btn ? btn.innerHTML : '';
-  if(btn){ btn.disabled = true; btn.innerHTML = 'Sending...'; }
+    var btn = form.querySelector('.btn-submit');
+    var originalBtnText = btn ? btn.innerHTML : '';
+    if(btn){ btn.disabled = true; btn.innerHTML = 'Sending...'; }
+    setEnquiryStatus(form, 'Sending your enquiry...', false);
 
-  fetch(form.action, {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: new FormData(form)
-  })
-  .then(function(res){
-    if(!res.ok) throw new Error('Request failed');
-    return res.json().catch(function(){ return {}; });
-  })
-  .then(function(){
-    SS.list = SS.list || [];
-    SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
-    SS.enquiries = (SS.enquiries||0) + 1;
-    save();
-    form.reset();
-    showEnquiryModal(n, p);
-  })
-  .catch(function(){
-    alert('Sorry, something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — your enquiry is important to us.');
-  })
-  .finally(function(){
-    if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
-  });
-
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json().catch(function(){ return {}; });
+    })
+    .then(function(){
+      SS.list = SS.list || [];
+      SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
+      SS.enquiries = (SS.enquiries||0) + 1;
+      save();
+      setEnquiryStatus(form, '🎉 Welcome to the SSS College family, ' + n + '! Your enquiry has been sent — we will call you soon at ' + p + '.', false);
+      try{ showEnquiryModal(n, p); }catch(modalErr){ console.error('Welcome modal failed to show:', modalErr); }
+      form.reset();
+    })
+    .catch(function(err){
+      console.error('Enquiry submission failed:', err);
+      setEnquiryStatus(form, 'Something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — we don\'t want to miss you!', true);
+    })
+    .finally(function(){
+      if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
+    });
+  } catch(fatalErr){
+    console.error('submitEnquiry fatal error:', fatalErr);
+    alert('Something went wrong. Please call us directly at 98942 18555 or WhatsApp us — your enquiry is important to us.');
+  }
   return false;
 }
 
 function showEnquiryModal(name, phone){
   var modal = document.getElementById('enquirySuccessModal');
-  if(!modal) return; // footer not yet loaded — fail silently, form still submitted
+  if(!modal) return; // footer not yet loaded — inline status message already shown, so this is a bonus only
   var nameEl = document.getElementById('wm-name');
   var phoneEl = document.getElementById('wm-phone');
   if(nameEl) nameEl.textContent = name || 'Student';
