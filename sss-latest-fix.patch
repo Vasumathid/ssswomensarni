@@ -1,0 +1,424 @@
+diff --git a/campus.html b/campus.html
+index 404cdbb..4aa1da6 100644
+--- a/campus.html
++++ b/campus.html
+@@ -234,6 +234,18 @@
+             </div>
+           </div>
+ 
++          <img
++            src="images/computer-lab-2.png"
++            alt="Students in Computer Lab SSS College for Women Arni"
++            style="
++              width: 100%;
++              max-height: 260px;
++              border-radius: 14px;
++              object-fit: cover;
++              margin-bottom: 24px;
++            "
++          />
++
+           <div class="two-col">
+             <div>
+               <h3 style="color: var(--purple); margin-bottom: 8px">
+diff --git a/contact.html b/contact.html
+index 9deea22..ec2839d 100644
+--- a/contact.html
++++ b/contact.html
+@@ -170,6 +170,7 @@
+               <button class="btn-submit" type="submit">
+                 &#10003; Submit Enquiry
+               </button>
++              <p id="enquiryStatusMsg" class="enquiry-status-msg" role="status"></p>
+             </form>
+           </div>
+           <div class="map-wrap">
+diff --git a/footer.html b/footer.html
+index e49c8a0..1f51d86 100644
+--- a/footer.html
++++ b/footer.html
+@@ -264,3 +264,31 @@
+     <span class="float-btn-label">Call Now</span>
+   </a>
+ </div>
++
++<!-- ENQUIRY SUCCESS WELCOME MODAL — present on every page -->
++<div id="enquirySuccessModal" class="welcome-modal-overlay" onclick="if(event.target===this) closeEnquiryModal()">
++  <div class="welcome-modal">
++    <button class="welcome-modal-close" onclick="closeEnquiryModal()" aria-label="Close">&#10005;</button>
++    <div class="welcome-modal-badge">&#127881;</div>
++    <h2 class="welcome-modal-title">Welcome to the SSS College Family!</h2>
++    <p class="welcome-modal-text">
++      Thank you, <strong id="wm-name">Student</strong>! Your enquiry has
++      reached our admissions team. We'll call you soon at
++      <strong id="wm-phone">your number</strong> — you could be one of us
++      very soon! &#127793;
++    </p>
++    <div class="welcome-modal-actions">
++      <a
++        href="https://wa.me/919894218555?text=Hello%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website"
++        class="btn-white welcome-modal-wa"
++        target="_blank"
++        rel="noopener"
++        onclick="trackWA()"
++        >&#128172; Chat with us on WhatsApp</a
++      >
++      <button class="welcome-modal-continue" onclick="closeEnquiryModal()">
++        Continue Browsing
++      </button>
++    </div>
++  </div>
++</div>
+diff --git a/index.html b/index.html
+index 7f000d4..dac613c 100644
+--- a/index.html
++++ b/index.html
+@@ -774,7 +774,22 @@
+             >
+           </div>
+         </div>
+-        <div class="enquiry-box">
++        <form
++          class="enquiry-box"
++          id="enquiryForm"
++          action="https://formsubmit.co/ajax/arnissscollege@gmail.com"
++          method="POST"
++          onsubmit="return submitEnquiry(event, this)"
++        >
++          <input type="hidden" name="_subject" value="New Admission Enquiry — SSS College Website" />
++          <input type="hidden" name="_template" value="table" />
++          <input type="hidden" name="_captcha" value="false" />
++          <p style="position: absolute; left: -9999px">
++            <label
++              >Don't fill this out if you're human:
++              <input name="_honey" tabindex="-1" autocomplete="off"
++            /></label>
++          </p>
+           <h3>&#128231; Start Your Application</h3>
+           <p
+             style="
+@@ -791,16 +806,24 @@
+             ><input
+               type="text"
+               id="eq-name"
++              name="name"
++              required
+               placeholder="Enter your full name"
+             />
+           </div>
+           <div class="form-group">
+             <label>Mobile Number</label
+-            ><input type="tel" id="eq-phone" placeholder="+91 XXXXX XXXXX" />
++            ><input
++              type="tel"
++              id="eq-phone"
++              name="phone"
++              required
++              placeholder="+91 XXXXX XXXXX"
++            />
+           </div>
+           <div class="form-group">
+             <label>Course Interested In</label>
+-            <select id="eq-course">
++            <select id="eq-course" name="course">
+               <option value="">Select a course</option>
+               <option>B.Sc. Computer Science</option>
+               <option>B.Sc. Artificial Intelligence</option>
+@@ -817,13 +840,15 @@
+             <label>Message (Optional)</label
+             ><textarea
+               id="eq-msg"
++              name="message"
+               placeholder="Any questions about admissions, fees, hostel..."
+             ></textarea>
+           </div>
+-          <button class="btn-submit" onclick="submitEnquiry()">
++          <button class="btn-submit" type="submit">
+             &#10003; Apply Now — It's Free
+           </button>
+-        </div>
++          <p id="enquiryStatusMsg" class="enquiry-status-msg" role="status"></p>
++        </form>
+       </div>
+     </section>
+ 
+diff --git a/main.js b/main.js
+index 5e99ab3..8e5db9a 100644
+--- a/main.js
++++ b/main.js
+@@ -164,22 +164,97 @@ function trackWA(){   SS.whatsapp = (SS.whatsapp||0)+1; save(); }
+ /* ═══════════════════════════════════════════════════════
+    ENQUIRY FORM
+ ═══════════════════════════════════════════════════════ */
+-function submitEnquiry(){
+-  var n = document.getElementById('eq-name').value.trim();
+-  var p = document.getElementById('eq-phone').value.trim();
+-  var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
+-  var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
+-  if(!n || !p){ alert('Please enter your name and phone number.'); return; }
+-  SS.list = SS.list || [];
+-  SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
+-  SS.enquiries = (SS.enquiries||0) + 1;
+-  save();
+-  ['eq-name','eq-phone','eq-course','eq-msg'].forEach(function(id){
+-    var el = document.getElementById(id); if(el) el.value = '';
+-  });
+-  alert('Thank you, '+n+'!\n\nYour enquiry has been received. Our admissions team will contact you shortly at '+p+'.');
++function setEnquiryStatus(form, text, isError){
++  var msg = form.querySelector('#enquiryStatusMsg');
++  if(!msg) return;
++  msg.textContent = text;
++  msg.style.display = 'block';
++  msg.style.marginTop = '12px';
++  msg.style.padding = '10px 14px';
++  msg.style.borderRadius = '8px';
++  msg.style.fontSize = '13.5px';
++  msg.style.fontWeight = '600';
++  if(isError){
++    msg.style.background = '#fdecea';
++    msg.style.color = '#c62828';
++  } else {
++    msg.style.background = '#e8f8ee';
++    msg.style.color = '#1b7a3d';
++  }
++}
++
++function submitEnquiry(evt, formEl){
++  try{
++    if(evt){ evt.preventDefault(); evt.stopPropagation(); }
++    var form = formEl || (evt && evt.target) || document.getElementById('enquiryForm');
++    var nameField = document.getElementById('eq-name');
++    var phoneField = document.getElementById('eq-phone');
++    var n = nameField ? nameField.value.trim() : '';
++    var p = phoneField ? phoneField.value.trim() : '';
++    var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
++    var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
++    if(!n || !p){ setEnquiryStatus(form, 'Please enter your name and phone number.', true); return false; }
++
++    var btn = form.querySelector('.btn-submit');
++    var originalBtnText = btn ? btn.innerHTML : '';
++    if(btn){ btn.disabled = true; btn.innerHTML = 'Sending...'; }
++    setEnquiryStatus(form, 'Sending your enquiry...', false);
++
++    fetch(form.action, {
++      method: 'POST',
++      headers: { 'Accept': 'application/json' },
++      body: new FormData(form)
++    })
++    .then(function(res){
++      if(!res.ok) throw new Error('HTTP ' + res.status);
++      return res.json().catch(function(){ return {}; });
++    })
++    .then(function(){
++      SS.list = SS.list || [];
++      SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
++      SS.enquiries = (SS.enquiries||0) + 1;
++      save();
++      setEnquiryStatus(form, '🎉 Welcome to the SSS College family, ' + n + '! Your enquiry has been sent — we will call you soon at ' + p + '.', false);
++      try{ showEnquiryModal(n, p); }catch(modalErr){ console.error('Welcome modal failed to show:', modalErr); }
++      form.reset();
++    })
++    .catch(function(err){
++      console.error('Enquiry submission failed:', err);
++      setEnquiryStatus(form, 'Something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — we don\'t want to miss you!', true);
++    })
++    .finally(function(){
++      if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
++    });
++  } catch(fatalErr){
++    console.error('submitEnquiry fatal error:', fatalErr);
++    alert('Something went wrong. Please call us directly at 98942 18555 or WhatsApp us — your enquiry is important to us.');
++  }
++  return false;
+ }
+ 
++function showEnquiryModal(name, phone){
++  var modal = document.getElementById('enquirySuccessModal');
++  if(!modal) return; // footer not yet loaded — inline status message already shown, so this is a bonus only
++  var nameEl = document.getElementById('wm-name');
++  var phoneEl = document.getElementById('wm-phone');
++  if(nameEl) nameEl.textContent = name || 'Student';
++  if(phoneEl) phoneEl.textContent = phone || 'your number';
++  modal.classList.add('show');
++}
++
++function closeEnquiryModal(){
++  var modal = document.getElementById('enquirySuccessModal');
++  if(modal) modal.classList.remove('show');
++}
++
++// Defensive backup: guarantee native form submission never fires,
++// even if the inline onsubmit attribute is ever stripped or fails silently.
++document.addEventListener('submit', function(e){
++  if(e.target && e.target.id === 'enquiryForm'){
++    e.preventDefault();
++  }
++}, true);
++
+ /* ═══════════════════════════════════════════════════════
+    IMAGE CAROUSEL (homepage hero)
+ ═══════════════════════════════════════════════════════ */
+diff --git a/style.css b/style.css
+index 31d9f7a..5ab83fe 100644
+--- a/style.css
++++ b/style.css
+@@ -2547,6 +2547,159 @@ footer h4 {
+   }
+ }
+ 
++/* ═══════════════════════════════════════════
++   ENQUIRY SUCCESS WELCOME MODAL
++═══════════════════════════════════════════ */
++.welcome-modal-overlay {
++  display: none;
++  position: fixed;
++  inset: 0;
++  background: rgba(30, 10, 40, .6);
++  backdrop-filter: blur(3px);
++  z-index: 2000;
++  align-items: center;
++  justify-content: center;
++  padding: 20px;
++}
++
++.welcome-modal-overlay.show {
++  display: flex;
++  animation: wmFadeIn .25s ease;
++}
++
++.welcome-modal {
++  background: #fff;
++  border-radius: 22px;
++  max-width: 440px;
++  width: 100%;
++  padding: 40px 32px 32px;
++  text-align: center;
++  position: relative;
++  box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
++  animation: wmPopIn .35s cubic-bezier(.34, 1.56, .64, 1);
++  border-top: 6px solid transparent;
++  background-image:
++    linear-gradient(#fff, #fff),
++    linear-gradient(90deg, var(--purple), var(--pink), var(--gold));
++  background-origin: border-box;
++  background-clip: padding-box, border-box;
++}
++
++.welcome-modal-close {
++  position: absolute;
++  top: 14px;
++  right: 16px;
++  background: none;
++  border: none;
++  font-size: 16px;
++  color: var(--muted);
++  cursor: pointer;
++  line-height: 1;
++  padding: 6px;
++}
++
++.welcome-modal-badge {
++  font-size: 52px;
++  margin-bottom: 6px;
++  animation: wmBounce 1s ease .3s;
++}
++
++.welcome-modal-title {
++  font-size: 22px;
++  font-weight: 800;
++  background: linear-gradient(90deg, var(--purple), var(--pink));
++  -webkit-background-clip: text;
++  background-clip: text;
++  color: transparent;
++  margin-bottom: 14px;
++}
++
++.welcome-modal-text {
++  font-size: 14.5px;
++  color: var(--muted);
++  line-height: 1.7;
++  margin-bottom: 26px;
++}
++
++.welcome-modal-text strong {
++  color: var(--text);
++}
++
++.welcome-modal-actions {
++  display: flex;
++  flex-direction: column;
++  gap: 10px;
++}
++
++.welcome-modal-wa {
++  background: #25d366;
++  color: #fff;
++  justify-content: center;
++  border-radius: 10px;
++  padding: 13px 20px;
++}
++
++.welcome-modal-continue {
++  background: none;
++  border: none;
++  color: var(--purple);
++  font-weight: 700;
++  font-size: 14px;
++  padding: 10px;
++  cursor: pointer;
++}
++
++@keyframes wmFadeIn {
++  from {
++    opacity: 0;
++  }
++
++  to {
++    opacity: 1;
++  }
++}
++
++@keyframes wmPopIn {
++  from {
++    opacity: 0;
++    transform: scale(.85) translateY(10px);
++  }
++
++  to {
++    opacity: 1;
++    transform: scale(1) translateY(0);
++  }
++}
++
++@keyframes wmBounce {
++
++  0%,
++  100% {
++    transform: translateY(0);
++  }
++
++  30% {
++    transform: translateY(-10px) scale(1.05);
++  }
++
++  50% {
++    transform: translateY(0);
++  }
++
++  70% {
++    transform: translateY(-5px);
++  }
++}
++
++@media (prefers-reduced-motion: reduce) {
++
++  .welcome-modal,
++  .welcome-modal-overlay.show,
++  .welcome-modal-badge {
++    animation: none;
++  }
++}
++
+ /* ═══════════════════════════════════════════
+    ATTRACT & ENGAGE — scroll reveals + micro-interactions
+    (Colours untouched — every rule below reuses the
