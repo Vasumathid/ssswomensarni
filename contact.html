@@ -16,6 +16,9 @@
       href="https://ssscollegeforwomenarni.ac.in/contact.html"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="premium.css" />
   </head>
   <body>
     <div id="site-header-placeholder"></div>
@@ -112,9 +115,13 @@
               id="enquiryForm"
               action="https://formsubmit.co/ajax/arnissscollege@gmail.com"
               method="POST"
-              onsubmit="return submitEnquiry(event, this)"
+              onsubmit="return submitEnquiry(event, this);"
             >
-              <input type="hidden" name="_subject" value="New Admission Enquiry — SSS College Website" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Admission Enquiry — SSS College Website"
+              />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
               <p style="position: absolute; left: -9999px">
@@ -170,7 +177,11 @@
               <button class="btn-submit" type="submit">
                 &#10003; Submit Enquiry
               </button>
-              <p id="enquiryStatusMsg" class="enquiry-status-msg" role="status"></p>
+              <p
+                id="enquiryStatusMsg"
+                class="enquiry-status-msg"
+                role="status"
+              ></p>
             </form>
           </div>
           <div class="map-wrap">
@@ -190,5 +201,6 @@
 
     <div id="site-footer-placeholder"></div>
     <script src="main.js"></script>
+    <script src="premium.js"></script>
   </body>
 </html>
