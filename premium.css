@@ -452,6 +452,49 @@ footer::before {
   }
 }
 
+/* ── Glance list: short icon+phrase rows replacing dense prose ─ */
+.glance-list {
+  margin: 18px 0 16px;
+}
+
+.glance-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.glance-row:last-child {
+  border-bottom: none;
+}
+
+.glance-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+
+/* ── Bigger, easier-to-scan icons across the site ────────────── */
+.about-icon {
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 26px !important;
+  border-radius: 12px !important;
+}
+
+.about-item strong {
+  font-size: 15px !important;
+}
+
+.rank-card .medal {
+  font-size: 40px;
+}
+
 /* ── Mobile refinements ──────────────────────────────────────── */
 @media (max-width: 640px) {
   .s-title { padding-bottom: 10px; }
