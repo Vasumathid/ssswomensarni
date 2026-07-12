@@ -1,0 +1,875 @@
+diff --git a/IQAC.html b/IQAC.html
+index 6f4afb8..c9430c8 100644
+--- a/IQAC.html
++++ b/IQAC.html
+@@ -14,6 +14,9 @@
+       href="https://ssscollegeforwomenarni.ac.in/contact.html"
+     />
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -101,5 +104,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/about.html b/about.html
+index 64c0900..4fc3c6a 100644
+--- a/about.html
++++ b/about.html
+@@ -17,6 +17,9 @@
+       href="https://ssscollegeforwomenarni.ac.in/about.html"
+     />
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -51,29 +54,7 @@
+         <div class="tab-panel" data-tab="story">
+           <div class="s-label">Our Story</div>
+           <h2 class="s-title">About the College</h2>
+-          <p>
+-            SSS College for Women was established in 2022-23 at Aagaram Village,
+-            Arni Taluk, under the AKN Educational Trust founded by Chairman
+-            Thiru A.K. Natarajan — who also runs the well-established SSS
+-            College of Arts, Science and Management, Arcot (since 2005).
+-          </p>
+-          <p>
+-            The college is dedicated exclusively to women, providing a safe,
+-            empowering environment where students grow intellectually,
+-            professionally, and personally. Led by
+-            <strong>Dr. V. VijayaLakshmi, M.Com., M.Phil.,MBA., Ph.D.</strong>
+-            as Principal, the college combines experienced faculty, modern
+-            infrastructure, and strong values.
+-          </p>
+-          <p>
+-            Our students participate in industrial visits, rural camps,
+-            entrepreneurial ventures, cultural activities, and sports —
+-            developing into well-rounded, socially responsible citizens. SSS
+-            College offers a unique combination of excellent graduates and
+-            accomplished faculty, with state-of-the-art computer labs, internet
+-            access, and a well-stocked digital library.
+-          </p>
+-          <div class="card-grid" style="margin-top: 24px">
++          <div class="card-grid" style="margin: 18px 0 24px">
+             <div class="card">
+               <div class="card-icon">&#127979;</div>
+               <div class="card-body">
+@@ -103,6 +84,28 @@
+               </div>
+             </div>
+           </div>
++          <p>
++            SSS College for Women was established in 2022-23 at Aagaram Village,
++            Arni Taluk, under the AKN Educational Trust founded by Chairman
++            Thiru A.K. Natarajan — who also runs the well-established SSS
++            College of Arts, Science and Management, Arcot (since 2005).
++          </p>
++          <p>
++            The college is dedicated exclusively to women, providing a safe,
++            empowering environment where students grow intellectually,
++            professionally, and personally. Led by
++            <strong>Dr. V. VijayaLakshmi, M.Com., M.Phil.,MBA., Ph.D.</strong>
++            as Principal, the college combines experienced faculty, modern
++            infrastructure, and strong values.
++          </p>
++          <p>
++            Our students participate in industrial visits, rural camps,
++            entrepreneurial ventures, cultural activities, and sports —
++            developing into well-rounded, socially responsible citizens. SSS
++            College offers a unique combination of excellent graduates and
++            accomplished faculty, with state-of-the-art computer labs, internet
++            access, and a well-stocked digital library.
++          </p>
+         </div>
+ 
+         <!-- VISION MISSION -->
+@@ -731,5 +734,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/academics.html b/academics.html
+index 0e350b4..dfa7198 100644
+--- a/academics.html
++++ b/academics.html
+@@ -17,6 +17,9 @@
+       href="https://ssscollegeforwomenarni.ac.in/academics.html"
+     />
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -502,5 +505,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/campus.html b/campus.html
+index a519646..168dbad 100644
+--- a/campus.html
++++ b/campus.html
+@@ -17,6 +17,9 @@
+       href="https://ssscollegeforwomenarni.ac.in/campus.html"
+     />
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -1022,5 +1025,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/contact.html b/contact.html
+index ec2839d..d08f3b8 100644
+--- a/contact.html
++++ b/contact.html
+@@ -16,6 +16,9 @@
+       href="https://ssscollegeforwomenarni.ac.in/contact.html"
+     />
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -190,5 +193,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/index.html b/index.html
+index e148bc4..a6f49cf 100644
+--- a/index.html
++++ b/index.html
+@@ -43,6 +43,9 @@
+       }
+     </script>
+     <link rel="stylesheet" href="style.css" />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link rel="stylesheet" href="premium.css" />
+   </head>
+   <body>
+     <div id="site-header-placeholder"></div>
+@@ -193,26 +196,24 @@
+         <div>
+           <div class="s-label">About the College</div>
+           <h2 class="s-title">Where Every Woman Is Encouraged to Rise</h2>
+-          <p>
+-            SSS College for Women opened its doors in 2022-23 at Aagaram
+-            Village, Arni Taluk, under the AKN Educational Trust founded by
+-            Chairman Thiru A.K. Natarajan — who also leads the well-established
+-            SSS College of Arts, Science and Management, Arcot (since 2005).
+-          </p>
+-          <p>
+-            This is a campus built exclusively for women — a safe,
+-            confidence-building space where students are pushed to grow
+-            intellectually, professionally, and personally. Under
+-            <strong>Dr. V. VijayaLakshmi, M.Com., M.Phil.,MBA., Ph.D.</strong>,
+-            our Principal, an experienced faculty team blends modern
+-            infrastructure with strong, grounded values.
+-          </p>
+-          <p>
+-            Beyond the classroom, our students take part in industrial visits,
+-            rural camps, entrepreneurial ventures, cultural events, and sports —
+-            stepping out as confident, well-rounded, socially responsible women
+-            ready for what's next.
+-          </p>
++          <div class="glance-list">
++            <div class="glance-row">
++              <span class="glance-icon">&#127978;</span>
++              <span>Opened 2022, run by the trusted AKN Educational Trust</span>
++            </div>
++            <div class="glance-row">
++              <span class="glance-icon">&#128737;&#65039;</span>
++              <span>A safe campus made only for women students</span>
++            </div>
++            <div class="glance-row">
++              <span class="glance-icon">&#127891;</span>
++              <span>Guided by Principal Dr. V. VijayaLakshmi and a caring staff</span>
++            </div>
++            <div class="glance-row">
++              <span class="glance-icon">&#127939;&#8205;&#9792;&#65039;</span>
++              <span>Sports, culture, and real-world visits — not just classroom study</span>
++            </div>
++          </div>
+           <a
+             href="about.html"
+             class="btn-primary"
+@@ -863,5 +864,6 @@
+ 
+     <div id="site-footer-placeholder"></div>
+     <script src="main.js"></script>
++    <script src="premium.js"></script>
+   </body>
+ </html>
+diff --git a/premium.css b/premium.css
+new file mode 100644
+index 0000000..26275ae
+--- /dev/null
++++ b/premium.css
+@@ -0,0 +1,504 @@
++/* ═══════════════════════════════════════════════════════════════
++   PREMIUM DESIGN LAYER — SSS College for Women, Arni
++   Loaded after style.css. Elevates typography, palette depth,
++   and motion without touching the existing markup structure.
++
++   Signature element: "The Gilded Insignia Rule" — an animated
++   gold seal-line that draws in under every section title and
++   frames achievement moments, echoing a certificate/graduation
++   ribbon — the visual thread of an institution built on results.
++   ═══════════════════════════════════════════════════════════════ */
++
++@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap');
++
++:root {
++  /* Deepened, more couture palette — same family as the original,
++     pushed to a richer, more saturated register */
++  --purple-deep: #3d0b5c;
++  --purple-ink: #2a0740;
++  --gold-foil: #b8912f;
++  --gold-light: #e9cf8a;
++  --gold-shimmer: #f6e6b8;
++  --rose-deep: #9c1450;
++  --ivory: #fffaf3;
++
++  --font-display: 'Fraunces', 'Georgia', serif;
++  --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
++
++  --ease-premium: cubic-bezier(.16, 1, .3, 1);
++}
++
++/* ── Base typography upgrade ────────────────────────────────── */
++html {
++  scroll-behavior: smooth;
++}
++
++body {
++  font-family: var(--font-body);
++  -webkit-font-smoothing: antialiased;
++  text-rendering: optimizeLegibility;
++}
++
++::selection {
++  background: var(--purple);
++  color: #fff;
++}
++
++/* Slim gold-flecked scrollbar (webkit only — progressive enhancement) */
++::-webkit-scrollbar { width: 10px; }
++::-webkit-scrollbar-track { background: var(--bg); }
++::-webkit-scrollbar-thumb {
++  background: linear-gradient(var(--purple), var(--rose-deep));
++  border-radius: 8px;
++}
++
++.s-title,
++.hero-sss,
++.header-sss,
++.card-body h3,
++.rank-card h3,
++.about-item strong,
++.hero-college-name,
++.hero-tagline {
++  font-family: var(--font-display) !important;
++  letter-spacing: -0.01em;
++}
++
++.s-title {
++  font-weight: 600 !important;
++  position: relative;
++  display: inline-block;
++  padding-bottom: 14px;
++}
++
++.s-label {
++  font-family: var(--font-body);
++  position: relative;
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++}
++
++.s-label::before {
++  content: '';
++  width: 18px;
++  height: 1px;
++  background: var(--gold-foil);
++  display: inline-block;
++}
++
++/* ── Signature: Gilded Insignia Rule ────────────────────────── */
++.s-title::after {
++  content: '';
++  position: absolute;
++  left: 0;
++  bottom: 0;
++  height: 3px;
++  width: 0;
++  background: linear-gradient(90deg, var(--gold-foil), var(--gold-light) 55%, transparent);
++  border-radius: 2px;
++  transition: width 1s var(--ease-premium);
++}
++
++.reveal.in-view .s-title::after,
++.section.in-view .s-title::after {
++  width: 86px;
++}
++
++/* ── Reveal-on-scroll (works with any element carrying .reveal;
++     also auto-applied by premium.js to common content blocks) ── */
++.reveal {
++  opacity: 0;
++  transform: translateY(28px);
++  transition: opacity .8s var(--ease-premium), transform .8s var(--ease-premium);
++}
++
++.reveal.in-view {
++  opacity: 1;
++  transform: translateY(0);
++}
++
++.reveal-stagger.in-view > * {
++  animation: none;
++}
++
++/* ── Header: glass elevation on scroll ──────────────────────── */
++.site-header {
++  transition: box-shadow .4s ease;
++}
++
++.header-nav {
++  transition: padding .3s ease, background .3s ease, box-shadow .3s ease;
++}
++
++body.scrolled .header-nav {
++  box-shadow: 0 8px 30px rgba(42, 7, 64, .18);
++  backdrop-filter: saturate(160%) blur(10px);
++}
++
++body.scrolled .header-identity {
++  box-shadow: none;
++}
++
++/* ── Hero: ambient gilded atmosphere ────────────────────────── */
++.hero {
++  position: relative;
++}
++
++.hero-atmosphere {
++  position: absolute;
++  inset: 0;
++  pointer-events: none;
++  overflow: hidden;
++  z-index: 0;
++}
++
++.hero-atmosphere span {
++  position: absolute;
++  border-radius: 50%;
++  background: radial-gradient(circle, rgba(233, 207, 138, .55), transparent 70%);
++  filter: blur(2px);
++  animation: driftGlow 14s ease-in-out infinite;
++}
++
++.hero-atmosphere span:nth-child(1) { width: 10px; height: 10px; top: 18%; left: 8%; animation-duration: 11s; }
++.hero-atmosphere span:nth-child(2) { width: 6px; height: 6px; top: 62%; left: 92%; animation-duration: 16s; animation-delay: 2s; }
++.hero-atmosphere span:nth-child(3) { width: 8px; height: 8px; top: 78%; left: 14%; animation-duration: 13s; animation-delay: 4s; }
++.hero-atmosphere span:nth-child(4) { width: 5px; height: 5px; top: 30%; left: 85%; animation-duration: 15s; animation-delay: 1s; }
++.hero-atmosphere span:nth-child(5) { width: 7px; height: 7px; top: 8%; left: 55%; animation-duration: 12s; animation-delay: 3s; }
++
++@keyframes driftGlow {
++  0%, 100% { transform: translateY(0) scale(1); opacity: .5; }
++  50% { transform: translateY(-26px) scale(1.4); opacity: 1; }
++}
++
++.hero-badge,
++.hero-college-name,
++.hero-tagline,
++.hero-btns,
++.hero-phones {
++  opacity: 0;
++  transform: translateY(18px);
++  animation: heroRise .9s var(--ease-premium) forwards;
++}
++
++.hero-badge { animation-delay: .05s; }
++.hero-college-name { animation-delay: .18s; }
++.hero-tagline { animation-delay: .32s; }
++.hero-btns { animation-delay: .46s; }
++.hero-phones { animation-delay: .58s; }
++
++@keyframes heroRise {
++  to { opacity: 1; transform: translateY(0); }
++}
++
++/* Carousel crossfade polish */
++.carousel-slide {
++  transition: opacity .9s ease;
++}
++
++.carousel-slide img {
++  transition: transform 6s linear;
++}
++
++.carousel-slide.active img {
++  transform: scale(1.06);
++}
++
++.carousel-caption {
++  transition: transform .5s var(--ease-premium), opacity .5s ease;
++}
++
++/* ── Cards: gilded corner insignia on hover ──────────────────── */
++.card,
++.facility-card,
++.rank-card,
++.about-item {
++  position: relative;
++}
++
++.card::before,
++.facility-card::before,
++.rank-card::before {
++  content: '';
++  position: absolute;
++  top: 8px;
++  left: 8px;
++  width: 16px;
++  height: 16px;
++  border-top: 2px solid var(--gold-foil);
++  border-left: 2px solid var(--gold-foil);
++  border-radius: 3px 0 0 0;
++  opacity: 0;
++  transform: translate(-4px, -4px);
++  transition: opacity .35s ease, transform .35s var(--ease-premium);
++  pointer-events: none;
++  z-index: 2;
++}
++
++.card::after,
++.facility-card::after,
++.rank-card::after {
++  content: '';
++  position: absolute;
++  bottom: 8px;
++  right: 8px;
++  width: 16px;
++  height: 16px;
++  border-bottom: 2px solid var(--gold-foil);
++  border-right: 2px solid var(--gold-foil);
++  border-radius: 0 0 3px 0;
++  opacity: 0;
++  transform: translate(4px, 4px);
++  transition: opacity .35s ease, transform .35s var(--ease-premium);
++  pointer-events: none;
++  z-index: 2;
++}
++
++.card:hover::before,
++.facility-card:hover::before,
++.rank-card:hover::before,
++.card:hover::after,
++.facility-card:hover::after,
++.rank-card:hover::after {
++  opacity: 1;
++  transform: translate(0, 0);
++}
++
++.card-icon {
++  transition: transform .5s var(--ease-premium);
++}
++
++/* Gallery: elegant zoom + caption veil */
++.gallery-strip img {
++  transition: transform .7s var(--ease-premium), filter .4s ease;
++}
++
++.gallery-strip img:hover {
++  filter: saturate(1.15);
++}
++
++/* ── Achievement strip: gold-foil counters ──────────────────── */
++.ach-strip {
++  position: relative;
++  overflow: hidden;
++}
++
++.ach-strip::after {
++  content: '';
++  position: absolute;
++  inset: 0;
++  background: linear-gradient(120deg, transparent 30%, rgba(233, 207, 138, .18) 50%, transparent 70%);
++  background-size: 220% 100%;
++  animation: sheen 7s linear infinite;
++  pointer-events: none;
++}
++
++@keyframes sheen {
++  0% { background-position: 200% 0; }
++  100% { background-position: -20% 0; }
++}
++
++.a-num {
++  font-family: var(--font-display);
++}
++
++/* ── Buttons: magnetic lift + gold-edge focus ───────────────── */
++.btn-primary, .btn-outline-pink, .btn-wa, .btn-white, .btn-submit {
++  will-change: transform;
++}
++
++a:focus-visible, button:focus-visible {
++  outline: 2px solid var(--gold-foil);
++  outline-offset: 3px;
++}
++
++/* ── Section entrance rhythm ─────────────────────────────────── */
++.card-grid.reveal-group > *,
++.three-col.reveal-group > *,
++.two-col.reveal-group > *,
++.rank-grid.reveal-group > * {
++  opacity: 0;
++  transform: translateY(24px);
++  transition: opacity .7s var(--ease-premium), transform .7s var(--ease-premium);
++}
++
++.reveal-group.in-view > * {
++  opacity: 1;
++  transform: translateY(0);
++}
++
++/* stagger — premium.js assigns transition-delay inline per child,
++   these are safe fallbacks if JS is unavailable */
++@media (prefers-reduced-motion: reduce) {
++  .reveal,
++  .card-grid.reveal-group > *,
++  .three-col.reveal-group > *,
++  .two-col.reveal-group > *,
++  .rank-grid.reveal-group > *,
++  .hero-badge, .hero-college-name, .hero-tagline, .hero-btns, .hero-phones {
++    opacity: 1 !important;
++    transform: none !important;
++    animation: none !important;
++    transition: none !important;
++  }
++  .hero-atmosphere { display: none; }
++}
++
++/* ── Form fields: quiet gold focus accent ────────────────────── */
++.form-group input,
++.form-group select,
++.form-group textarea {
++  transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease;
++}
++
++.form-group input:focus,
++.form-group select:focus,
++.form-group textarea:focus {
++  border-color: var(--gold-foil);
++  box-shadow: 0 0 0 3px rgba(184, 145, 47, .14);
++  transform: translateY(-1px);
++}
++
++/* ── Footer: gold hairline divider ───────────────────────────── */
++.site-footer,
++footer {
++  position: relative;
++}
++
++.site-footer::before,
++footer::before {
++  content: '';
++  display: block;
++  height: 2px;
++  background: linear-gradient(90deg, transparent, var(--gold-foil), transparent);
++}
++
++/* ── Inner-page hero banner (about/academics/campus/contact) ── */
++.page-hero {
++  background: linear-gradient(135deg, var(--purple-deep) 0%, var(--rose-deep) 100%);
++  position: relative;
++  overflow: hidden;
++}
++
++.page-hero::after {
++  content: '';
++  position: absolute;
++  right: -60px;
++  top: -60px;
++  width: 220px;
++  height: 220px;
++  border: 1px solid rgba(233, 207, 138, .35);
++  border-radius: 50%;
++}
++
++.page-hero h1 {
++  font-family: var(--font-display) !important;
++  font-weight: 600 !important;
++  opacity: 0;
++  transform: translateY(14px);
++  animation: heroRise .8s var(--ease-premium) forwards .1s;
++}
++
++.page-hero p {
++  opacity: 0;
++  transform: translateY(14px);
++  animation: heroRise .8s var(--ease-premium) forwards .22s;
++}
++
++.breadcrumb {
++  opacity: 0;
++  animation: heroRise .6s var(--ease-premium) forwards;
++}
++
++/* ── Tab sidebar: gilded active indicator ────────────────────── */
++.tab-sidebar-group-title {
++  position: relative;
++  padding-left: 20px;
++}
++
++.tab-sidebar-group-title::before {
++  content: '';
++  position: absolute;
++  left: 0;
++  top: 50%;
++  width: 10px;
++  height: 1px;
++  background: var(--gold-foil);
++}
++
++.tab-link {
++  position: relative;
++}
++
++.tab-link.active {
++  border-left-color: var(--gold-foil) !important;
++}
++
++.tab-panel.active {
++  animation: panelRise .45s var(--ease-premium);
++}
++
++@keyframes panelRise {
++  from { opacity: 0; transform: translateY(10px); }
++  to { opacity: 1; transform: translateY(0); }
++}
++
++@media (prefers-reduced-motion: reduce) {
++  .page-hero h1, .page-hero p, .breadcrumb {
++    animation: none !important;
++    opacity: 1 !important;
++    transform: none !important;
++  }
++}
++
++/* ── Glance list: short icon+phrase rows replacing dense prose ─ */
++.glance-list {
++  margin: 18px 0 16px;
++}
++
++.glance-row {
++  display: flex;
++  align-items: center;
++  gap: 14px;
++  padding: 10px 0;
++  border-bottom: 1px dashed var(--border);
++  font-size: 15px;
++  color: var(--text);
++  line-height: 1.4;
++}
++
++.glance-row:last-child {
++  border-bottom: none;
++}
++
++.glance-icon {
++  font-size: 26px;
++  flex-shrink: 0;
++  width: 40px;
++  text-align: center;
++}
++
++/* ── Bigger, easier-to-scan icons across the site ────────────── */
++.about-icon {
++  width: 52px !important;
++  height: 52px !important;
++  font-size: 26px !important;
++  border-radius: 12px !important;
++}
++
++.about-item strong {
++  font-size: 15px !important;
++}
++
++.rank-card .medal {
++  font-size: 40px;
++}
++
++/* ── Mobile refinements ──────────────────────────────────────── */
++@media (max-width: 640px) {
++  .s-title { padding-bottom: 10px; }
++  .hero-atmosphere span { display: none; }
++  .hero-atmosphere span:nth-child(1),
++  .hero-atmosphere span:nth-child(3) { display: block; }
++}
+diff --git a/premium.js b/premium.js
+new file mode 100644
+index 0000000..bff7bac
+--- /dev/null
++++ b/premium.js
+@@ -0,0 +1,128 @@
++/* ═══════════════════════════════════════════════════════════════
++   PREMIUM INTERACTIONS — SSS College for Women, Arni
++   Additive layer: does not touch main.js's header/footer/tab logic.
++   ═══════════════════════════════════════════════════════════════ */
++(function () {
++  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
++
++  /* ── 1. Header elevation on scroll ─────────────────────────── */
++  var lastScrolled = false;
++  function onScroll() {
++    var scrolled = window.scrollY > 30;
++    if (scrolled !== lastScrolled) {
++      document.body.classList.toggle('scrolled', scrolled);
++      lastScrolled = scrolled;
++    }
++  }
++  window.addEventListener('scroll', onScroll, { passive: true });
++  onScroll();
++
++  /* ── 2. Hero ambient sparks ────────────────────────────────── */
++  document.querySelectorAll('.hero').forEach(function (hero) {
++    if (hero.querySelector('.hero-atmosphere')) return;
++    var wrap = document.createElement('div');
++    wrap.className = 'hero-atmosphere';
++    wrap.setAttribute('aria-hidden', 'true');
++    for (var i = 0; i < 5; i++) wrap.appendChild(document.createElement('span'));
++    hero.insertBefore(wrap, hero.firstChild);
++  });
++
++  /* ── 3. Tag sections + grids for reveal / stagger ──────────── */
++  document.querySelectorAll('.section').forEach(function (el) {
++    el.classList.add('reveal');
++  });
++
++  var groupSelectors = ['.card-grid', '.three-col', '.rank-grid', '.two-col'];
++  groupSelectors.forEach(function (sel) {
++    document.querySelectorAll(sel).forEach(function (group) {
++      group.classList.add('reveal-group');
++      Array.prototype.forEach.call(group.children, function (child, i) {
++        child.style.transitionDelay = reduceMotion ? '0ms' : (i * 90) + 'ms';
++      });
++    });
++  });
++
++  document.querySelectorAll('.about-item, .gallery-strip').forEach(function (el) {
++    el.classList.add('reveal');
++  });
++
++  /* ── 4. IntersectionObserver-driven reveals ────────────────── */
++  var revealTargets = document.querySelectorAll('.reveal, .reveal-group');
++
++  if ('IntersectionObserver' in window && !reduceMotion) {
++    var io = new IntersectionObserver(function (entries, obs) {
++      entries.forEach(function (entry) {
++        if (entry.isIntersecting) {
++          entry.target.classList.add('in-view');
++          obs.unobserve(entry.target);
++        }
++      });
++    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
++
++    revealTargets.forEach(function (el) { io.observe(el); });
++  } else {
++    revealTargets.forEach(function (el) { el.classList.add('in-view'); });
++  }
++
++  /* ── 5. Count-up on achievement numbers ────────────────────── */
++  function animateCount(el) {
++    var raw = el.textContent.trim();
++    var match = raw.match(/^(\d+)(.*)$/);
++    if (!match) return;
++    var target = parseInt(match[1], 10);
++    var suffix = match[2] || '';
++    if (reduceMotion || !target) { return; }
++
++    var start = null;
++    var duration = 1100;
++    el.textContent = '0' + suffix;
++
++    function step(ts) {
++      if (!start) start = ts;
++      var progress = Math.min((ts - start) / duration, 1);
++      var eased = 1 - Math.pow(1 - progress, 3);
++      var current = Math.round(eased * target);
++      el.textContent = current + suffix;
++      if (progress < 1) {
++        requestAnimationFrame(step);
++      } else {
++        var parentItem = el.closest('.ach-item');
++        if (parentItem) parentItem.classList.add('counted');
++      }
++    }
++    requestAnimationFrame(step);
++  }
++
++  var counters = document.querySelectorAll('.a-num');
++  if (counters.length) {
++    if ('IntersectionObserver' in window) {
++      var countIO = new IntersectionObserver(function (entries, obs) {
++        entries.forEach(function (entry) {
++          if (entry.isIntersecting) {
++            animateCount(entry.target);
++            obs.unobserve(entry.target);
++          }
++        });
++      }, { threshold: 0.4 });
++      counters.forEach(function (el) { countIO.observe(el); });
++    } else {
++      counters.forEach(function (el) { el.classList.add('counted'); });
++    }
++  }
++
++  /* ── 6. Subtle 3D tilt on cards (desktop pointer only) ─────── */
++  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
++    document.querySelectorAll('.card, .facility-card, .rank-card').forEach(function (card) {
++      card.style.transformStyle = 'preserve-3d';
++      card.addEventListener('mousemove', function (e) {
++        var r = card.getBoundingClientRect();
++        var x = (e.clientX - r.left) / r.width - 0.5;
++        var y = (e.clientY - r.top) / r.height - 0.5;
++        card.style.transform = 'translateY(-8px) rotateX(' + (y * -5) + 'deg) rotateY(' + (x * 6) + 'deg)';
++      });
++      card.addEventListener('mouseleave', function () {
++        card.style.transform = '';
++      });
++    });
++  }
++})();
