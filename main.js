@@ -210,17 +210,24 @@ function submitEnquiry(evt, formEl){
       return res.json().catch(function(){ return {}; });
     })
     .then(function(){
-      SS.list = SS.list || [];
-      SS.list.unshift({name:n, phone:p, course:c||'General', msg:m, date:new Date().toLocaleDateString('en-IN'), status:'New'});
-      SS.enquiries = (SS.enquiries||0) + 1;
-      save();
       setEnquiryStatus(form, '🎉 Welcome to the SSS College family, ' + n + '! Your enquiry has been sent — we will call you soon at ' + p + '.', false);
       try{ showEnquiryModal(n, p); }catch(modalErr){ console.error('Welcome modal failed to show:', modalErr); }
       form.reset();
     })
     .catch(function(err){
-      console.error('Enquiry submission failed:', err);
-      setEnquiryStatus(form, 'Something went wrong sending your enquiry. Please call us directly at 98942 18555 or message us on WhatsApp — we don\'t want to miss you!', true);
+      console.error('Enquiry submission failed, falling back to email:', err);
+      var subject = 'New Admission Enquiry — ' + n;
+      var body =
+        'Name: ' + n + '\n' +
+        'Phone: ' + p + '\n' +
+        'Course Interested In: ' + (c || 'Not specified') + '\n' +
+        'Message: ' + (m || '-');
+      var mailtoUrl = 'mailto:arnissscollege@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      setEnquiryStatus(form, 'We could not submit automatically. Opening your email app with your details filled in — please just hit send. Or WhatsApp/Call us at 98942 18555.', true);
+      window.location.href = mailtoUrl;
     })
     .finally(function(){
       if(btn){ btn.disabled = false; btn.innerHTML = originalBtnText; }
