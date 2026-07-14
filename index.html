@@ -785,37 +785,38 @@
         <form
           class="enquiry-box"
           id="enquiryForm"
-          action="https://formsubmit.co/ajax/arnissscollege@gmail.com"
+          action="https://api.web3forms.com/submit"
           method="POST"
           onsubmit="return submitEnquiry(event, this);"
         >
           <input
             type="hidden"
-            name="_subject"
+            name="access_key"
+            value="ef179c0f-71b1-4167-aaf3-29e8eff3de8b"
+          />
+          <input
+            type="hidden"
+            name="subject"
             value="New Admission Enquiry — SSS College Website"
           />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="from_name" value="SSS College Website" />
+
           <p style="position: absolute; left: -9999px">
             <label
               >Don't fill this out if you're human:
-              <input name="_honey" tabindex="-1" autocomplete="off"
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabindex="-1"
+                autocomplete="off"
             /></label>
           </p>
-          <h3>&#128231; Start Your Application</h3>
-          <p
-            style="
-              font-size: 13px;
-              color: var(--muted);
-              margin-top: -8px;
-              margin-bottom: 14px;
-            "
-          >
-            Takes less than a minute — our team calls you back the same day.
-          </p>
+
+          <h3>&#128231; Send an Enquiry</h3>
+
           <div class="form-group">
-            <label>Full Name</label
-            ><input
+            <label>Full Name</label>
+            <input
               type="text"
               id="eq-name"
               name="name"
@@ -824,8 +825,8 @@
             />
           </div>
           <div class="form-group">
-            <label>Mobile Number</label
-            ><input
+            <label>Mobile Number</label>
+            <input
               type="tel"
               id="eq-phone"
               name="phone"
@@ -849,15 +850,16 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Message (Optional)</label
-            ><textarea
+            <label>Message (Optional)</label>
+            <textarea
               id="eq-msg"
               name="message"
               placeholder="Any questions about admissions, fees, hostel..."
             ></textarea>
           </div>
+
           <button class="btn-submit" type="submit">
-            &#10003; Apply Now — It's Free
+            &#10003; Submit Enquiry
           </button>
           <p id="enquiryStatusMsg" class="enquiry-status-msg" role="status"></p>
         </form>
