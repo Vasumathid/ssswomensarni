@@ -3,7 +3,7 @@ index 6f4afb8..c9430c8 100644
 --- a/IQAC.html
 +++ b/IQAC.html
 @@ -14,6 +14,9 @@
-       href="https://ssscollegeforwomenarni.ac.in/contact.html"
+       href="https://ssswomenscollege.com/contact.html"
      />
      <link rel="stylesheet" href="style.css" />
 +    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,7 +24,7 @@ index 64c0900..4fc3c6a 100644
 --- a/about.html
 +++ b/about.html
 @@ -17,6 +17,9 @@
-       href="https://ssscollegeforwomenarni.ac.in/about.html"
+       href="https://ssswomenscollege.com/about.html"
      />
      <link rel="stylesheet" href="style.css" />
 +    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,7 +105,7 @@ index 0e350b4..dfa7198 100644
 --- a/academics.html
 +++ b/academics.html
 @@ -17,6 +17,9 @@
-       href="https://ssscollegeforwomenarni.ac.in/academics.html"
+       href="https://ssswomenscollege.com/academics.html"
      />
      <link rel="stylesheet" href="style.css" />
 +    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -126,7 +126,7 @@ index a519646..168dbad 100644
 --- a/campus.html
 +++ b/campus.html
 @@ -17,6 +17,9 @@
-       href="https://ssscollegeforwomenarni.ac.in/campus.html"
+       href="https://ssswomenscollege.com/campus.html"
      />
      <link rel="stylesheet" href="style.css" />
 +    <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -147,7 +147,7 @@ index ec2839d..d08f3b8 100644
 --- a/contact.html
 +++ b/contact.html
 @@ -16,6 +16,9 @@
-       href="https://ssscollegeforwomenarni.ac.in/contact.html"
+       href="https://ssswomenscollege.com/contact.html"
      />
      <link rel="stylesheet" href="style.css" />
 +    <link rel="preconnect" href="https://fonts.googleapis.com" />
