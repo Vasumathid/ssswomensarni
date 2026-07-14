@@ -113,6 +113,7 @@
               action="https://api.web3forms.com/submit"
               method="POST"
               onsubmit="return submitEnquiry(event, this);"
+              novalidate
             >
               <input
                 type="hidden"
@@ -129,7 +130,6 @@
                 name="from_name"
                 value="SSS College Website"
               />
-
               <p style="position: absolute; left: -9999px">
                 <label
                   >Don't fill this out if you're human:
@@ -140,9 +140,7 @@
                     autocomplete="off"
                 /></label>
               </p>
-
               <h3>&#128231; Send an Enquiry</h3>
-
               <div class="form-group">
                 <label>Full Name</label>
                 <input
@@ -150,6 +148,10 @@
                   id="eq-name"
                   name="name"
                   required
+                  minlength="3"
+                  maxlength="60"
+                  pattern="[A-Za-z\s.']{3,60}"
+                  title="Please enter a valid name (letters only, at least 3 characters)"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -160,12 +162,16 @@
                   id="eq-phone"
                   name="phone"
                   required
-                  placeholder="+91 XXXXX XXXXX"
+                  pattern="[6-9][0-9]{9}"
+                  maxlength="10"
+                  inputmode="numeric"
+                  title="Please enter a valid 10-digit Indian mobile number"
+                  placeholder="98XXXXXXXX"
                 />
               </div>
               <div class="form-group">
                 <label>Course Interested In</label>
-                <select id="eq-course" name="course">
+                <select id="eq-course" name="course" required>
                   <option value="">Select a course</option>
                   <option>B.Sc. Computer Science</option>
                   <option>B.Sc. Artificial Intelligence</option>
@@ -183,10 +189,10 @@
                 <textarea
                   id="eq-msg"
                   name="message"
+                  maxlength="500"
                   placeholder="Any questions about admissions, fees, hostel..."
                 ></textarea>
               </div>
-
               <button class="btn-submit" type="submit">
                 &#10003; Submit Enquiry
               </button>

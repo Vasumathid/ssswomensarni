@@ -189,11 +189,35 @@ function submitEnquiry(evt, formEl){
     var form = formEl || (evt && evt.target) || document.getElementById('enquiryForm');
     var nameField = document.getElementById('eq-name');
     var phoneField = document.getElementById('eq-phone');
+    var courseField = document.getElementById('eq-course');
     var n = nameField ? nameField.value.trim() : '';
     var p = phoneField ? phoneField.value.trim() : '';
-    var c = document.getElementById('eq-course') ? document.getElementById('eq-course').value : 'General';
-    var m = document.getElementById('eq-msg')    ? document.getElementById('eq-msg').value    : '';
-    if(!n || !p){ setEnquiryStatus(form, 'Please enter your name and phone number.', true); return false; }
+    var c = courseField ? courseField.value : '';
+    var m = document.getElementById('eq-msg') ? document.getElementById('eq-msg').value.trim() : '';
+
+    // Validation
+    var namePattern = /^[A-Za-z\s.']{3,60}$/;
+    var phonePattern = /^[6-9][0-9]{9}$/;
+
+    if(!n || !namePattern.test(n)){
+      setEnquiryStatus(form, 'Please enter a valid full name (letters only, min 3 characters).', true);
+      nameField && nameField.focus();
+      return false;
+    }
+    if(!p || !phonePattern.test(p)){
+      setEnquiryStatus(form, 'Please enter a valid 10-digit mobile number starting with 6-9.', true);
+      phoneField && phoneField.focus();
+      return false;
+    }
+    if(!c){
+      setEnquiryStatus(form, 'Please select the course you are interested in.', true);
+      courseField && courseField.focus();
+      return false;
+    }
+    if(m.length > 500){
+      setEnquiryStatus(form, 'Message is too long. Please keep it under 500 characters.', true);
+      return false;
+    }
 
     var btn = form.querySelector('.btn-submit');
     var originalBtnText = btn ? btn.innerHTML : '';
